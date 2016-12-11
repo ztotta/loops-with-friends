@@ -35,10 +35,70 @@ var stationIndex = function(req, res) {
 // CREATE STATION
 //||||||||||||||||||||||||||--
 var stationCreate = function(req, res) {
-  var station       = new Station();   // create a new instance of the Station model
+  
+		//// Assign arrays:
+	var instruments = [];
+	var instrumentsList = ["KICK", "SNARE", "HIHAT-CLOSED", "HIHAT-OPEN", "RIMSHOT", "CLAP"];
 
-  station.name      = req.body.name;
-  station.category  = req.body.category;
+	instrumentsList.forEach(instrument => {
+		createInstruments(instrument);
+	});
+
+	function createInstruments(instrument) {
+		instruments.push({
+			name: instrument,
+			steps: [],
+			muted: false,
+			mutePressed: false,
+			show: false
+		});
+	}
+
+	// For each instrument, call the steps to populate its panel:
+	instruments.forEach((instrument, index) => {
+		createSteps(instrument, index);
+	});
+
+	function createSteps(instrument, index) {
+		for (var i = 0; i < 64; i++) {
+			if (i === 0 || i % 4) {
+				var quarterNote = true;
+			} else {
+				var quarterNote = false;
+			}
+
+			instrument.steps.push(
+				{
+					id: `${instrument.name}${i}`,
+					on: false,
+					pressed: false,
+					quarterNote: quarterNote
+				}
+			);
+		};
+	};
+	
+	var globalControls = [
+				{ 
+					name: "GLOBAL I/O",
+					on: false
+				},
+				{ 
+					name: "TEMPO",
+					on: true
+				},
+				{ 
+					name: "KEY",
+					on: true
+				}
+			];
+	
+	var station                    = new Station();   // create a new instance of the Station model
+
+  station.name                   = req.body.name;
+  station.category               = req.body.category;
+	station.stationInstruments     = instruments;
+	station.globalControls         = globalControls;
 
   station.save(function(err, savedStation) {
     if (err) {
@@ -47,6 +107,7 @@ var stationCreate = function(req, res) {
 
     // log a message
     console.log("What a station!")
+		console.log(station)
     // return the station
     res.json(savedStation);
   });

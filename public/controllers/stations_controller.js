@@ -33,7 +33,6 @@
     vm.updateStation      = updateStation;
     vm.postStation        = postStation;
     vm.resetEditForm 		  = resetEditForm;
-		vm.checkParams			  = checkParams;
 //		vm.addStationToUser   = addStationToUser;  
 
 		// Pull in list of stations upon loading home page (need to hide within conditional):
@@ -52,10 +51,20 @@
       });
     }
 		
+//		function getStations() {
+//      $http.get('/api/users/' + vm.user._id).then(function(response) {
+//				console.log(response.data.stationIds)
+//        vm.stations = response.data.stationIds;
+//      }, function(errRes) {
+//        console.error('Error retrieving stations.', errRes);
+//      });
+//    }
+		
 		// Initiate station show route:
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
         vm.station = response.data;
+				console.log(vm.station)
 				$state.go('station', { id: response.data._id })
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);
@@ -73,8 +82,6 @@
     function postStation() {
       $http.post('/api/stations', vm.newStation)
 				.then(function(response) {
-					console.log(response.data._id);
-					console.log(vm.user._id);
 					$http.put('/api/users/' + vm.user._id, {stationId: response.data._id})
 						.then(getStations)
 						.then(function() {
@@ -106,10 +113,12 @@
       };
     }
 		
-		function checkParams() {
-			if ($stateParams.id) {
-				return true
-			}
+		vm.stepOnOff = function(step) {
+			step.on = !step.on;
+		};
+		
+		vm.stepPressed = function(step) {
+			step.pressed = !step.pressed;
 		};
 
   }

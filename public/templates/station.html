@@ -1,15 +1,15 @@
 <div class="container" ng-controller="StationsController as sta">
 
 	<div class="row panel" id="control-panel">
-			<div class="col s4 knob-global panel-button" ng-repeat="control in sta.globalControls" ng-click="sta.globalLoopOn(); control.on = !control.on">{{ control.name }}</div>
+			<div class="col s4 knob-global panel-button" ng-repeat="control in sta.station.globalControls" ng-click="sta.globalLoopOn(); control.on = !control.on">{{ control.name }}</div>
 		<div class="col s12" id="on-off-panel">
-			<button ng-repeat="instrument in sta.instruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show">{{ instrument.name }}</button>
+			<button ng-repeat="instrument in sta.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show">{{ instrument.name }}</button>
 		</div>
 	</div>
 	<button ng-click="sta.setStepPromises()">SET STEP PROMISES</button>
 	<button ng-click="sta.globalLoopOn()">STOP</button>
 
-	<div class="row" ng-repeat="instrument in sta.instruments" ng-show="instrument.show">
+	<div class="row" ng-repeat="instrument in sta.station.stationInstruments" ng-show="instrument.show"> 
 		<div class="panel instrument-panel">
 			<div class="panel-header">
 			  <!-- can DRY up by making object in InstrumentController -->
@@ -20,8 +20,8 @@
 			<div class="step-panel">
 				<span class="step" ng-repeat="step in instrument.steps" id="{{step.id}}" 
 					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on }"
-					ng-mousedown="inst.stepPressed(step); inst.stepOnOff(step)"
-					ng-mouseup="inst.stepPressed(step)"><span class="step-text"></span></span>
+					ng-mousedown="sta.stepPressed(step); inst.stepOnOff(step)"
+					ng-mouseup="sta.stepPressed(step)"><span class="step-text"></span></span>
 			</div>
 		</div>
 	</div>
