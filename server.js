@@ -16,7 +16,7 @@ var app = express();
 var mongoose = require('./app/config/database');
 
 // uncomment after placing your favicon in /img
-app.use(favicon(path.join(__dirname, 'public/assets/img', 'derry.ico')));
+app.use(favicon(path.join(__dirname, 'public/assets/img', 'record.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

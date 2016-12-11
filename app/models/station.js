@@ -4,8 +4,9 @@ var mongoose = require('mongoose'),
 
 // Create a schema of your model
 var stationSchema = new mongoose.Schema({
-  name:   String,
-  user:   { type: mongoose.Schema.Types.ObjectId, ref:'User' }
+  name:   		    String,
+  user:   		    { type: mongoose.Schema.Types.ObjectId, ref:'User' },
+	instruments:    []
 });
 
 // Create the model using your schema.

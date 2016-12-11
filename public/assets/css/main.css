@@ -20,8 +20,9 @@ body {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	height: 30px;
+	height: 50px;
 	background-color: #4e90d0;
+	padding: 5px;
 }
 
 .footer-links {
@@ -29,6 +30,7 @@ body {
 	margin: 0 auto;
 	padding-right: 20px;
 	margin-top: auto;
+	color: white;
 }
 
 .footer-wrapper {
@@ -133,10 +135,13 @@ nav {
 
 .nav-wrapper {
 	background-color: #4e90d0;
+	color: white;
 }
 
 #footer-wrapper {
 	height: 100%;
+	color: white;
+/*	background-color: aqua;*/
 }
 
 #on-off-panel {
@@ -209,4 +214,21 @@ nav {
 .panel-button-on {
 	transform: translateX(-2px) translateY(-2px);
 	background-color: lightgrey;
+}
+.invite {
+	height: 80%;
+/*	width: 20%;*/
+	margin: 0 auto 10px auto;
+}
+
+.invite-div {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-list {
+	position: relative;
+	float: right;
 }

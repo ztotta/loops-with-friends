@@ -31,7 +31,7 @@
         controller: "StationsController",
         controllerAs: "sta",
 			  params: {
-					idd: null
+					id: null
 				}
       });
 

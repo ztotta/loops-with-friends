@@ -20,6 +20,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 </head>
 <body ng-controller="MainController as vm" ng-cloak>
+ <div ng-controller="StationsController as sta">
   
 	<nav>
 		<div class="nav-wrapper">
@@ -54,13 +55,18 @@
 
 	<!-- FOOTER -->
 	<div id="footer">
-		<div id="footer-wrapper" class="nav-wrapper">
-			<ul id="" class="footer-wrapper">
-				<li class="footer-links"><a href="sass.html">MY STATION</a></li>
-				<li class="footer-links"><a href="sass.html">NEW STATION</a></li>
-				<li class="footer-links"><a href="badges.html">SIGN IN/OUT</a></li>
-			</ul>
+<!--		<div id="footer-wrapper" class="nav-wrapper">-->
+	 <div class="row invite" ng-show="sta.checkParams()">
+		<div class="col s12 invite-div">
+			Enter a friend's email to invite:
+			<div class="input-field inline">
+				<input id="email" type="email" class="validate">
+				<label for="email" data-error="wrong" data-success="right">Email</label>
+			</div>
+			<button class="btn invite-btn">INVITE</button>
 		</div>
+	</div>
+<!--		</div>-->
 	</div>
 
   <!-- Angular scripts -->
@@ -74,5 +80,6 @@
   <script src="/controllers/login_controller.js"></script>
   <script src="/controllers/users_controller.js"></script>
   <script src="/controllers/stations_controller.js"></script>
+	</div>
 </body>
 </html>

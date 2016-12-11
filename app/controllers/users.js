@@ -12,6 +12,7 @@ var userCreate = function(req, res) {
     user.name         = req.body.name;  // set the users name (comes from the request)
     user.email  			= req.body.email;  // set the users email (comes from the request)
     user.password     = req.body.password;  // set the users password (comes from the request)
+		user.stationIds   = [];
 
 
     user.save(function(err, newUser) {
@@ -74,13 +75,14 @@ var userUpdate = function(req, res) {
         if (err) res.send(err);
 
         // set the new user information if it exists in the request
-        if (req.body.name)        user.name        = req.body.name;
-        if (req.body.email) 			user.email 			 = req.body.email;
-        if (req.body.password)    user.password    = req.body.password;
-//        if (req.body.station)    	user.stations.push(req.body.station);
+        if (req.body.name)       		user.name = req.body.name;
+        if (req.body.email) 				user.email = req.body.email;
+        if (req.body.password)    	user.password = req.body.password;
+        if (req.body.stationId)    	user.stationIds.push(req.body.stationId);
 
         // save the user
         user.save(function(err) {
+					console.log(user)
           if (err) res.send(err);
 
           // return a message
