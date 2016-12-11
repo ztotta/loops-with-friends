@@ -1,0 +1,29 @@
+<div class="container" ng-controller="InstrumentsController as inst">
+
+	<div class="row panel" id="control-panel">
+			<div class="col s4 knob-global panel-button" ng-repeat="control in inst.globalControls" ng-click="inst.globalLoopOn(); control.on = !control.on">{{ control.name }}</div>
+		<div class="col s12" id="on-off-panel">
+			<button ng-repeat="instrument in inst.instruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show">{{ instrument.name }}</button>
+		</div>
+	</div>
+	<button ng-click="inst.setStepPromises()">SET STEP PROMISES</button>
+	<button ng-click="inst.globalLoopOn()">STOP</button>
+
+	<div class="row" ng-repeat="instrument in inst.instruments" ng-show="instrument.show">
+		<div class="panel instrument-panel">
+			<div class="panel-header">
+			  <!-- can DRY up by making object in InstrumentController -->
+				<span class="col s4 panel-button" ng-mousedown="inst.panelButtonPressed()">{{ instrument.name }}</span>
+				<span class="col s4 panel-button" ng-click="instrument.muted = !instrument.muted">MUTE I/O</span>
+				<span class="col s4 panel-button" ng-click="instrument.show = !instrument.show">HIDE</span>
+			</div>
+			<div class="step-panel">
+				<span class="step" ng-repeat="step in instrument.steps" id="{{step.id}}" 
+					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on }"
+					ng-mousedown="inst.stepPressed(step); inst.stepOnOff(step)"
+					ng-mouseup="inst.stepPressed(step)"><span class="step-text"></span></span>
+			</div>
+		</div>
+	</div>
+
+</div>  

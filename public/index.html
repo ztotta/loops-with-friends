@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="loopsApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Loops W/ Friends</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="/assets/js/wad.js"></script>
+	<script src="assets/js/main.js"></script>
+  <!-- MATERIALIZE -->
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+</head>
+<body ng-controller="MainController as vm" ng-cloak>
+  
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">LOOPS W/ FRIENDS</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="right hide-on-med-and-down">
+				<li role="presentation" ui-sref-active="active">
+        <a ui-sref="homePage">Home</a>
+				</li>
+				<li role="presentation" ui-sref-active="active">
+					<a ui-sref="aboutPage">About</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
+					<a ui-sref="register">Register</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-show="vm.isLoggedIn()">
+					<a ui-sref="homePage">My Stations</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-show="vm.isLoggedIn()">
+					<a ui-sref="homePage">New Station</a>
+				</li>
+				<li ng-show="vm.isLoggedIn()">
+					<a class="btn" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+    <main class="content" ui-view>
+      <!-- PAGE TEMPLATES INSERT HERE -->
+    </main>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<div id="footer-wrapper" class="nav-wrapper">
+			<ul id="" class="footer-wrapper">
+				<li class="footer-links"><a href="sass.html">MY STATION</a></li>
+				<li class="footer-links"><a href="sass.html">NEW STATION</a></li>
+				<li class="footer-links"><a href="badges.html">SIGN IN/OUT</a></li>
+			</ul>
+		</div>
+	</div>
+
+  <!-- Angular scripts -->
+  <script src="/app.module.js"></script>
+  <script src="/app.routes.js"></script>
+  <script src="/services/auth.token.js"></script>
+  <script src="/services/auth.interceptor.js"></script>
+  <script src="/services/auth.service.js"></script>
+  <script src="/services/user.dataservice.js"></script>
+  <script src="/controllers/main_controller.js"></script>
+  <script src="/controllers/login_controller.js"></script>
+  <script src="/controllers/users_controller.js"></script>
+  <script src="/controllers/stations_controller.js"></script>
+</body>
+</html>

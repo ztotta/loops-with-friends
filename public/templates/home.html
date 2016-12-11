@@ -1,0 +1,55 @@
+<div class="row">
+	<div ng-controller="StationsController as sta">
+	<div class="panel instrument-panel" id="login-panel" ng-hide="vm.isLoggedIn()">
+		<h3>Welcome!</h3>
+		<br>
+		<p><strong>To <em>Loop W/ Friends</em>
+				please <a ui-sref-active="active" ui-sref="register">register</a> or login:</strong></p>
+		<br>
+		<form class="form-inline" ng-submit="vm.login()">
+			<div class="form-group">
+				<label for="inputEmail1">Email</label>
+				<input type="text" id="inputEmail1" class="form-control" placeholder="email" ng-model="vm.loginData.email" required />
+			</div>
+			<div class="form-group">
+				<label for="inputPword1">Password</label>
+				<input type="password" id="inputPword1" class="form-control" placeholder="Save your info!" ng-model="vm.loginData.password" required />
+			</div>
+			<button class="btn btn-success submit-login-button" type="submit">Login!</button>
+		</form>
+	</div>
+	<div class="panel instrument-panel" id="hello-panel" ng-show="vm.isLoggedIn()">
+			<h2>Welcome {{vm.currentUser.name}}!</h2>
+				<a class="btn" ng-click="sta.postStation()">NEW STATION</a>
+				<hr>
+				
+			<!-- LISTING USER STATIONS -->
+			<ul id="stations">
+				<li ng-repeat="station in sta.stations" class="station-li">
+					<br>
+					<a ng-click="sta.getStation(station)"><strong>{{station.name}}</strong></a>
+					<button class="btn btn-danger btn-xs" ng-click="sta.deleteStation(station._id)">X</button>
+<!--
+					<button class="btn btn-warning btn-xs" ng-click="showme=true">Edit</button>
+
+					<form class="form-inline" ng-show="showme" id="edit-form">
+						<br>
+						<div class="form-group">
+							<input type="text" name='stationName' id="station-name" placeholder="{{station.name}}" class="form-control" ng-model="vm.editStation.name" />
+						</div>
+						<select class="form-control" name="stationCategory" id="station-category" ng-model="vm.editStation.category">
+								<option value="Fish">Fish</option>
+								<option value="Clothing">Clothing</option>
+								<option value="Corpse">Corpse</option>
+								<option value="Trash">Trash</option>
+						</select>
+						<button class="btn btn-success btn-xs" ng-click="vm.updateStation(station._id)">Save</button>
+						<button class="btn btn-default btn-xs" ng-click="showme=false; vm.resetEditForm();">Cancel</button>
+
+					</form>
+-->
+				</li>
+  		</ul>
+		</div>
+	</div>
+</div>

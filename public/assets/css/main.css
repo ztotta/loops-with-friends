@@ -1,0 +1,212 @@
+html, body {
+	margin: 0;
+	height: 100%;
+}
+
+body > * {
+	color: white;
+	font-family: font-family: 'Ruda', sans-serif;
+}
+
+body {
+	background-image: url('../img/takashi-1.jpg');
+	background-size: 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background-color: #4e90d0;
+}
+
+.footer-links {
+	display:inline-block;
+	margin: 0 auto;
+	padding-right: 20px;
+	margin-top: auto;
+}
+
+.footer-wrapper {
+	text-align: center;
+}
+
+form {
+	background-color: white;
+}
+
+.side-nav {
+	z-index: 10000;
+}
+
+.tester {
+	height: 200px;
+	width: 200px;
+	background-color: peru;
+}
+
+.container {
+	margin-top: 74px;
+	margin-bottom: 80px;
+	width: 1000px;
+	min-width: 1000px;
+}
+
+.col {
+	text-align: center;
+}
+
+.instrument-panel {
+	height: 280px;
+	background-color: #91c7d9;
+}
+
+#control-panel {
+	height: 100px;
+	margin-top: 79px;
+	margin-bottom: 20px !important;
+}
+
+.panel {
+	background-color: #d6d8e4;
+	border: 5px solid #4e90d0;
+	border-radius: 5px;
+	width: 100%;
+	box-shadow: 3px 3px black;
+}
+
+.panel-header {
+	background-color: #4e90d0;
+	height: 10%;
+}
+
+.row {
+	width: 100%;
+/*	margin-bottom: 0 !important;*/
+	font-size: 1.2em;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+}
+
+.brand-logo {
+	padding: 5px 0 0 15px !important;
+}
+
+.step {
+	height: 53px;
+	display: inline-table;
+	width: 53.99px;
+	background-color: #edadcc;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 3px 4px; 
+	text-align: center;
+	box-shadow: 2px 2px black;
+}
+
+.depressed {
+	box-shadow: 0px 0px black;
+	transform: translateY(2px) translateX(2px)
+}
+
+.stepOn {
+	background-color: #ffdbec;
+}
+
+.step-panel {
+	height: 90%;
+	display: block;
+	text-align: center;
+/*
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: space-between;
+*/
+}
+
+.nav-wrapper {
+	background-color: #4e90d0;
+}
+
+#footer-wrapper {
+	height: 100%;
+}
+
+#on-off-panel {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-top: 8px;
+}
+
+.button-on-off {
+	margin: auto;
+	display: inline-block;
+}
+
+.knob-global {
+	background-color: #4e90d0;
+	height: 28px;
+	cursor: pointer;
+}
+
+.muted {
+	background-color: black;
+}
+
+.quarterNote {
+	background-color: black;
+}
+#login-panel {
+	width: 600px;
+	height: 600px;
+	background-color: #d6d8e4;
+	margin: 74px auto 0 auto;
+}
+
+#hello-panel {
+	background-color: #d6d8e4;
+	width: 600px;
+	height: 400px;
+	margin: 74px auto 0 auto;
+	padding: 20px;
+}
+
+#register-panel {
+	width: 600px;
+	height: 600px;
+	margin: 74px auto 0 auto;
+	padding: 20px;
+}
+
+
+
+#login-panel {
+	width: 600px;
+	height: 275px;
+	margin: 74px auto 0 auto;
+	padding: 20px;
+}
+
+.step-text {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.panel-button {
+	background-color: slategrey;
+	box-shadow: 2px 2px black;
+	cursor: pointer;
+}
+
+.panel-button-on {
+	transform: translateX(-2px) translateY(-2px);
+	background-color: lightgrey;
+}
