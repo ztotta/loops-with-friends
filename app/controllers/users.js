@@ -13,9 +13,11 @@ var userCreate = function(req, res) {
     user.email  			= req.body.email;  // set the users email (comes from the request)
     user.password     = req.body.password;  // set the users password (comes from the request)
 		user.stationIds   = [];
+		console.log(user);
 
 
     user.save(function(err, newUser) {
+				console.log(err);
         if (err) {
           // duplicate entry
           if (err.code == 11000)
@@ -46,7 +48,7 @@ var userCreate = function(req, res) {
 // GET USER
 //||||||||||||||||||||||||||--
 var userShow = function(req, res) {
-  User.findById(req.params.id, function(err, user) {
+  User.findById(req.params.id).populate('stationIds').exec(function(err, user) {
         if (err) res.send(err);
 
         // return that user

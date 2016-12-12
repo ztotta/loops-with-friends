@@ -18,9 +18,12 @@ var stationShow = function(req, res, next){
 };
 
 //||||||||||||||||||||||||||--
-// GET STATION (INDEX)
+// GET STATIONS (INDEX)
 //||||||||||||||||||||||||||--
 var stationIndex = function(req, res) {
+	
+	console.log(req)
+	
   Station.find({}, function(err, stations) {
     if (err) {
       res.send(err);
@@ -29,6 +32,32 @@ var stationIndex = function(req, res) {
     // return the stations
     res.json(stations);
   });
+}
+
+//||||||||||||||||||||||||||--
+// GRAB STATIONS (INDEX)
+//||||||||||||||||||||||||||--
+var grabStations = function(req, res) {
+	
+	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++")
+	
+	var stationIds = [];
+	
+	Station.find({
+    _id: { $in: ['584eeb93cb58721fc362d45f','584eebc10fe8df1fd0074f92']}}, 
+						function(err, station){
+							console.log("<=====> DATA (after Station.find): ", station)
+							stationIds.push(station)
+						}
+	);
+	
+	setTimeout(() => {
+		console.log("SetTimeout stationIds: ", stationIds)
+		res.json(stationIds)
+	}, 5000)
+	
+	console.log("====================================================")
+
 }
 
 //||||||||||||||||||||||||||--
@@ -106,8 +135,7 @@ var stationCreate = function(req, res) {
     }
 
     // log a message
-    console.log("What a station!")
-		console.log(station)
+    console.log("Created a station!")
     // return the station
     res.json(savedStation);
   });
@@ -162,6 +190,7 @@ var stationDelete = function(req, res) {
 module.exports = {
   stationShow:   stationShow,
   stationIndex:  stationIndex,
+	grabStations:  grabStations,
   stationCreate: stationCreate,
   stationUpdate: stationUpdate,
   stationDelete: stationDelete

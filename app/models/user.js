@@ -1,6 +1,6 @@
 var mongoose     = require('mongoose'),
     Schema       = mongoose.Schema,
-    Station      = require('./station.js'),
+    Station      = require('./station'),
     bcrypt       = require('bcrypt-nodejs');
 
 //||||||||||||||||||||||||||--
@@ -14,7 +14,7 @@ var UserSchema   = new Schema({
                  index: { unique: true }
   },
   password:    { type: String, required: true, select: false },
-	stationIds:		 []
+	stationIds:		 [{type: mongoose.Schema.Types.ObjectId, ref: 'Station'}]
 });
 
 // exclude password

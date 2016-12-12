@@ -35,6 +35,7 @@
     vm.resetEditForm 		  = resetEditForm;
 		vm.setStepPromises    = setStepPromises;
 		vm.playStep           = playStep;
+		vm.checkParams        = checkParams;
 //		vm.addStationToUser   = addStationToUser;  
 
 		// Pull in list of stations upon loading home page (need to hide within conditional):
@@ -45,22 +46,22 @@
 			vm.getStation($stateParams.id);
 		}
 
-    function getStations() {
-      $http.get('/api/stations').then(function(response) {
+//    function getStations() {
+//      $http.get('/api/stations', vm.user).then(function(response) {
+//        vm.stations = response.data;
+//      }, function(errRes) {
+//        console.error('Error retrieving stations.', errRes);
+//      });
+//    }
+		
+		function getStations() {
+      $http.post('/api/grabStations', vm.user).then(function(response) {
+//				console.log(response.data)
         vm.stations = response.data;
       }, function(errRes) {
         console.error('Error retrieving stations.', errRes);
       });
     }
-		
-//		function getStations() {
-//      $http.get('/api/users/' + vm.user._id).then(function(response) {
-//				console.log(response.data.stationIds)
-//        vm.stations = response.data.stationIds;
-//      }, function(errRes) {
-//        console.error('Error retrieving stations.', errRes);
-//      });
-//    }
 		
 		// Initiate station show route:
 		function getStation(stationId) {
@@ -75,7 +76,6 @@
 
     function deleteStation(id) {
       $http.delete('/api/stations/' + id).then(function(response) {
-        console.log(response);
       }, function(errRes) {
         console.error('Error deleting station.', errRes);
       }).then(getStations);
@@ -84,12 +84,14 @@
     function postStation() {
       $http.post('/api/stations', vm.newStation)
 				.then(function(response) {
+//					console.log(response.data._id)
 					$http.put('/api/users/' + vm.user._id, {stationId: response.data._id})
 						.then(getStations)
 						.then(function() {
 							vm.newStation = {
 								name: ['Convoluted','Knotted','Looping','Curling', 'Whorling', 'Twirling', 'Swirling'][Math.floor(7 * Math.random())] + '-' + ['Jackal','Hyena','Swordsmith','Pangolin','Muskrat','Canyon','Arch', 'Archduke', 'Baron'][Math.floor(9 * Math.random())] + Math.floor(Math.random() * (99 - 10)) + 10
 							};
+//							console.log(vm.user)
 							$state.go('station');
 						});
 				})
@@ -145,7 +147,9 @@
 					vm.station.stationInstruments.forEach((instr) => {
 						playStep(instr)
 					})
-					setStepPromises();
+					if (true) { // breakpoint for global pause
+						setStepPromises();
+					}
 				})
 				.catch((reason) => {
 					console.log(reason)
@@ -160,6 +164,13 @@
 					}
 					else if (instr.name === "SNARE") { snare.play() }
 				}
+			}
+		}
+		
+		function checkParams() {
+			if ($stateParams.id) {
+				console.log($stateParams.id)
+				return true
 			}
 		}
 		
