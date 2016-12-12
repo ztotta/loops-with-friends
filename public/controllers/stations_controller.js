@@ -33,6 +33,8 @@
     vm.updateStation      = updateStation;
     vm.postStation        = postStation;
     vm.resetEditForm 		  = resetEditForm;
+		vm.setStepPromises    = setStepPromises;
+		vm.playStep           = playStep;
 //		vm.addStationToUser   = addStationToUser;  
 
 		// Pull in list of stations upon loading home page (need to hide within conditional):
@@ -64,7 +66,7 @@
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
         vm.station = response.data;
-				console.log(vm.station)
+        console.log(vm.station);
 				$state.go('station', { id: response.data._id })
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);
@@ -121,6 +123,47 @@
 			step.pressed = !step.pressed;
 		};
 
+		vm.i = -1
+		function setStepPromises() {
+			Promise.all(vm.station.stationInstruments.map(instr => {
+				var x = new Promise((res, rej) => {
+					setTimeout(() => {
+						if (Math.floor(vm.i) < 63) {
+							vm.i += 0.16666666666667;
+							res();
+						} else {
+							setTimeout(() => {
+								vm.i = -1;
+							}, 115.38)
+							rej("reject");
+						}
+					}, 100)
+				})
+				return x;
+			}))
+				.then(() => {
+					vm.station.stationInstruments.forEach((instr) => {
+						playStep(instr)
+					})
+					setStepPromises();
+				})
+				.catch((reason) => {
+					console.log(reason)
+				})
+		}
+
+		function playStep(instr) {
+			if (!instr.muted) {	
+				if (instr.steps[Math.floor(vm.i)].on) {
+					if (instr.name === "KICK") { 
+						kick.play() 
+					}
+					else if (instr.name === "SNARE") { snare.play() }
+				}
+			}
+		}
+		
+    vm.$state = $state;
   }
 
 })();
