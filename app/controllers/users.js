@@ -45,7 +45,7 @@ var userCreate = function(req, res) {
 };
 
 //||||||||||||||||||||||||||--
-// GET USER
+// GET USER (SHOW)
 //||||||||||||||||||||||||||--
 var userShow = function(req, res) {
   User.findById(req.params.id).populate('userStations').exec(function(err, user) {
@@ -57,7 +57,7 @@ var userShow = function(req, res) {
 };
 
 //||||||||||||||||||||||||||--
-// GET USERS
+// GET USERS (INDEX)
 //||||||||||||||||||||||||||--
 var usersAll = function(req, res) {
   User.find({}, function(err, users) {
@@ -80,7 +80,7 @@ var userUpdate = function(req, res) {
         if (req.body.name)       		user.name = req.body.name;
         if (req.body.email) 				user.email = req.body.email;
         if (req.body.password)    	user.password = req.body.password;
-        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
+//        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
 
         // save the user
         user.save(function(err) {

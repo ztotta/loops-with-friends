@@ -21,8 +21,9 @@
     function login() {
       authService.login(vm.loginData.email, vm.loginData.password)
         .then(function(res) {
-          $log.log(res.data);
-          $state.go('homePage');
+          $log.log("res.data: ", res.data.user);
+					vm.currentUser = res.data.user;
+          $state.go('hello');
         });
     };
 

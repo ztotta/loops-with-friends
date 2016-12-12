@@ -21,11 +21,11 @@
         email: 			 email,
         password:    password
       })
-        .success(function(data) {
-          authToken.setToken(data.token);
+        .then(function(data) {
+          authToken.setToken(data.data.token);
 
           // set userDataService.user to the logged in user
-          userDataService.user = data.user;
+          userDataService.user = data.data.user;
           console.log("Check it out: ", userDataService.user);
           return data;
         });

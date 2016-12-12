@@ -18,15 +18,16 @@
 		</form>
 	</div>
 	
+<!--
 	<div class="panel instrument-panel" id="hello-panel" ng-show="vm.isLoggedIn()">
 		<div ng-controller="StationsController as sta">
 			<h2>Welcome {{vm.currentUser.name}}!</h2>
 				<a class="btn" ng-click="sta.postStation()">NEW STATION</a>
 				<hr>
 				
-			<!-- LISTING USER STATIONS -->
+			 LISTING USER STATIONS 
 			<ul id="stations">
-				<li ng-repeat="station in sta.user.stations" class="station-li">
+				<li ng-repeat="station in sta.stations" class="station-li">
 					<br>
 					<a ng-click="sta.getStation(station._id)"><strong>{{station.name}}</strong></a>
 					<button class="btn btn-danger btn-xs btn-list" ng-click="sta.deleteStation(station._id)">X</button>
@@ -35,3 +36,4 @@
 		</div>
 	</div>
 </div>
+-->
