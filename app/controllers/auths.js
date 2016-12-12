@@ -11,7 +11,7 @@ var userAuth = function (req, res, next) {
   // find the user
   User.findOne({
       email: req.body.email
-    }).select('email password name stationIds').populate('stationIds').exec(function(err, user) {
+    }).select('email password name stations').populate('userStations').exec(function(err, user) {
 
       if (err) throw err;
 
@@ -38,7 +38,7 @@ var userAuth = function (req, res, next) {
             email: 			 		user.email,
             name:        		user.name,
             _id:         		user._id, 
-						stationIds:  		user.stationIds
+						userStations:   user.userStations
           }, superSecret, {
             expiresIn: '30d' // expires in 30 days
           });

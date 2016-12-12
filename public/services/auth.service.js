@@ -26,7 +26,7 @@
 
           // set userDataService.user to the logged in user
           userDataService.user = data.user;
-          console.log("Check it out: ", userDataService);
+          console.log("Check it out: ", userDataService.user);
           return data;
         });
     };

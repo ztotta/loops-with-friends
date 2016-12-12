@@ -26,7 +26,7 @@
 				
 			<!-- LISTING USER STATIONS -->
 			<ul id="stations">
-				<li ng-repeat="station in sta.stations" class="station-li">
+				<li ng-repeat="station in sta.user.stations" class="station-li">
 					<br>
 					<a ng-click="sta.getStation(station._id)"><strong>{{station.name}}</strong></a>
 					<button class="btn btn-danger btn-xs btn-list" ng-click="sta.deleteStation(station._id)">X</button>

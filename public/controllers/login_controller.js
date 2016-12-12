@@ -25,15 +25,6 @@
           $state.go('homePage');
         });
     };
-		
-//		getStations();
-//		function getStations() {
-//      $http.get('/api/stations').then(function(response) {
-//        vm.stations = response.data;
-//      }, function(errRes) {
-//        console.error('Error retrieving stations.', errRes);
-//      });
-//    };
 
   }
 

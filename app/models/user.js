@@ -7,14 +7,14 @@ var mongoose     = require('mongoose'),
 // CREATE USER SCHEMA
 //||||||||||||||||||||||||||--
 var UserSchema   = new Schema({
-  name:        { type: String, required: true },
-  email: {
-                 type: String,
-                 required: true,
-                 index: { unique: true }
-  },
-  password:    { type: String, required: true, select: false },
-	stationIds:		 [{type: mongoose.Schema.Types.ObjectId, ref: 'Station'}]
+	name:            { type: String, required: true },
+	email:       		 {
+										 type: String,
+										 required: true,
+										 index: { unique: true }
+									 },
+	password:    		 { type: String, required: true, select: false },
+	userStations:		 [{type: mongoose.Schema.Types.ObjectId, ref: 'Station'}]
 });
 
 // exclude password

@@ -35,32 +35,6 @@ var stationIndex = function(req, res) {
 }
 
 //||||||||||||||||||||||||||--
-// GRAB STATIONS (INDEX)
-//||||||||||||||||||||||||||--
-var grabStations = function(req, res) {
-	
-	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++")
-	
-	var stationIds = [];
-	
-	Station.find({
-    _id: { $in: ['584eeb93cb58721fc362d45f','584eebc10fe8df1fd0074f92']}}, 
-						function(err, station){
-							console.log("<=====> DATA (after Station.find): ", station)
-							stationIds.push(station)
-						}
-	);
-	
-	setTimeout(() => {
-		console.log("SetTimeout stationIds: ", stationIds)
-		res.json(stationIds)
-	}, 5000)
-	
-	console.log("====================================================")
-
-}
-
-//||||||||||||||||||||||||||--
 // CREATE STATION
 //||||||||||||||||||||||||||--
 var stationCreate = function(req, res) {
@@ -190,7 +164,6 @@ var stationDelete = function(req, res) {
 module.exports = {
   stationShow:   stationShow,
   stationIndex:  stationIndex,
-	grabStations:  grabStations,
   stationCreate: stationCreate,
   stationUpdate: stationUpdate,
   stationDelete: stationDelete

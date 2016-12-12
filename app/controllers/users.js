@@ -12,7 +12,7 @@ var userCreate = function(req, res) {
     user.name         = req.body.name;  // set the users name (comes from the request)
     user.email  			= req.body.email;  // set the users email (comes from the request)
     user.password     = req.body.password;  // set the users password (comes from the request)
-		user.stationIds   = [];
+		user.userStations   = [];
 		console.log(user);
 
 
@@ -48,7 +48,7 @@ var userCreate = function(req, res) {
 // GET USER
 //||||||||||||||||||||||||||--
 var userShow = function(req, res) {
-  User.findById(req.params.id).populate('stationIds').exec(function(err, user) {
+  User.findById(req.params.id).populate('userStations').exec(function(err, user) {
         if (err) res.send(err);
 
         // return that user
@@ -80,7 +80,7 @@ var userUpdate = function(req, res) {
         if (req.body.name)       		user.name = req.body.name;
         if (req.body.email) 				user.email = req.body.email;
         if (req.body.password)    	user.password = req.body.password;
-        if (req.body.stationId)    	user.stationIds.push(req.body.stationId);
+        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
 
         // save the user
         user.save(function(err) {
