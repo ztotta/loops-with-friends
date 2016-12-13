@@ -90,11 +90,6 @@
 						});
 				})
     }
-
-//		// update the station every 5 seconds:
-//		setInterval(() => {
-//			updateStation();
-//		}, 5000)
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.station._id, vm.station).then(function(response) {
@@ -117,7 +112,6 @@
 		
 		vm.stepOnOff = function(step) {
 			step.on = !step.on;
-			updateStation();
 		};
 		
 		vm.stepPressed = function(step) {
