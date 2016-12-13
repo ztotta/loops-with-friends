@@ -29,7 +29,9 @@
 			console.log(vm.stationService.email);
 			$http.put('/api/users/invite/' + vm.stationService.email, {stationId: vm.stationService.station._id, email: vm.stationService.email})
 				.then(function(response) {
-					console.log("inviteUser response: ", response);
+					console.log("response: ", response)
+//					stationService.email = null;
+					stationService.email = response.data.message;
 				});
 		}
 		

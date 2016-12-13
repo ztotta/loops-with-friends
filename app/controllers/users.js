@@ -118,21 +118,25 @@ var userUpdate = function(req, res) {
 var userInvite = function(req, res) {
   User.findOne({email: req.body.email}, function(err, user) {
 		
-        if (err) res.send(err);
+        if (err) res.json({message: "Couldn't find that user...invite them to register!"});
 
-        // set the new user information if it exists in the request
-        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
-		
-				console.log("InviteUser req.body: ", req.body)
-
-        // save the user
-        user.save(function(err, user) {
-          if (err) res.json(err);
-					User.populate(user, {path: "userStations"}, function(err, uppedUser){
+				// If the stationId has been sent, and a matching user has been found:	
+        if (req.body.stationId && user)  {
+        	
+					// Add the shared station's ID to the user's stationIds array:
+					user.userStations.push(req.body.stationId);
+					
+					// Save the updated user:
+					user.save(function(err, user) {
 						if (err) res.json(err);
-          	res.json({message: 'User updated!', user: user});
+						User.populate(user, {path: "userStations"}, function(err, uppedUser){
+							if (err) res.json(err);
+							res.json({message: 'invited ' + user.email});
+						});
 					});
-        });
+				} else {
+					res.json({message: "couldn't find that user..."});
+				}
   });
 }
 

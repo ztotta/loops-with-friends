@@ -17,3 +17,9 @@ To do:
 	folder.
 	=> then make batch saves on an interval to the DB
 - clean up ng-controller distribution
+
+Bugs:
+- email form:
+	- 'Email' label hangs back, or isn't there in the first place
+	- need a way to inform the user if that friend hasn't registered yet, or if the
+		invite was successful
