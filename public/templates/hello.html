@@ -8,7 +8,7 @@
 		<ul id="stations">
 			<li ng-repeat="station in hel.stationService.stations" class="station-li">
 				<br>
-				<a ng-click="hel.getStation(station._id)"><strong>{{station.name}}</strong></a>
+				<a ng-click="hel.goToStation(station._id)"><strong>{{station.name}}</strong></a>
 				<button class="btn btn-danger btn-xs btn-list" ng-click="hel.deleteStation(station._id)">X</button>
 			</li>
 		</ul>

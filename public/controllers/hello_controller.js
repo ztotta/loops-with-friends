@@ -15,6 +15,7 @@
 		
 		vm.getStations      = getStations;
 		vm.postStation      = postStation;
+		vm.goToStation      = goToStation;
 		vm.deleteStation    = deleteStation;
 		
 		getStations();
@@ -40,6 +41,10 @@
 					});
 			})
     }
+		
+		function goToStation(stationId) {
+			$state.go('station', {id: stationId})
+		}
 		
 		function deleteStation(id) {
 			$http.delete('/api/stations/' + id).then(function(response) {
