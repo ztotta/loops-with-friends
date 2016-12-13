@@ -5,9 +5,9 @@
       .module("loopsApp")
       .controller("MainController", MainController);
 
-  MainController.$inject = ["$state", "userDataService", "$log", "authService", "stationService", "$stateParams"];
+  MainController.$inject = ["$state", "userDataService", "$log", "authService", "stationService", "$stateParams", "$http"];
 
-  function MainController($state, userDataService, $log, authService, stationService, $stateParams) {
+  function MainController($state, userDataService, $log, authService, stationService, $stateParams, $http) {
     var vm = this;
 
     vm.userService = userDataService;
@@ -16,6 +16,7 @@
 		vm.stationService = stationService;
 		vm.userInvite =  userInvite;
 		vm.checkParams = checkParams;
+		vm.station     = stationService.station;
 
 		
 		function checkParams() {
@@ -25,8 +26,8 @@
 		}
 		
 		function userInvite() {
-			return console.log(vm.stationService.email);
-			$http.put('/api/users/invite/' + vm.stationService.email, {stationId: vm.station._id, email: vm.stationService.email})
+			console.log(vm.stationService.email);
+			$http.put('/api/users/invite/' + vm.stationService.email, {stationId: vm.stationService.station._id, email: vm.stationService.email})
 				.then(function(response) {
 					console.log("inviteUser response: ", response);
 				});

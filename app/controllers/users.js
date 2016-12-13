@@ -71,15 +71,35 @@ var usersAll = function(req, res) {
 //||||||||||||||||||||||||||--
 // UPDATE USER
 //||||||||||||||||||||||||||--
+//var userUpdate = function(req, res) {
+//	console.log("req.body.email: ", req.body.email)
+//	console.log("req.body.stationId: ", req.body.stationId)
+//  User.findOne({email: req.body}, function(err, user) {
+//
+//        if (err) res.send(err);
+//
+//        // set the new user information if it exists in the request
+//        if (req.body.stationId) user.userStations.push(req.body.stationId);
+//
+//        // save the user
+//        user.save(function(err, user) {
+//          if (err) res.json(err);
+//					User.populate(user, {path: "userStations"}, function(err, uppedUser){
+//						console.log("upped user: ", uppedUser)
+//						if (err) res.json(err);
+//          	res.json({ message: 'User updated!', userStations: uppedUser.userStations});
+//					});
+//        });
+//  });
+//}
+
 var userUpdate = function(req, res) {
-	console.log("req.body.email: ", req.body.email)
-	console.log("req.body.stationId: ", req.body.stationId)
-  User.findOne({email: req.body}, function(err, user) {
+  User.findById(req.params.id, function(err, user) {
 
         if (err) res.send(err);
 
         // set the new user information if it exists in the request
-        if (req.body.stationId) user.userStations.push(req.body.stationId);
+        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
 
         // save the user
         user.save(function(err, user) {
@@ -110,7 +130,7 @@ var userInvite = function(req, res) {
           if (err) res.json(err);
 					User.populate(user, {path: "userStations"}, function(err, uppedUser){
 						if (err) res.json(err);
-          	res.json({message: 'User updated!'});
+          	res.json({message: 'User updated!', user: user});
 					});
         });
   });

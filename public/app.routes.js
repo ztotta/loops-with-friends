@@ -18,8 +18,8 @@
 			.state("hello", {
         url: "/hello",
         templateUrl: "/templates/hello.html",
-        controller: "StationsController",
-        controllerAs: "sta"
+        controller: "HelloController",
+        controllerAs: "hel"
       })
       .state("aboutPage", {
         url: "/about",

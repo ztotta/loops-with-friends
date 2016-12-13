@@ -13,7 +13,9 @@
     // create station factory object
     var stationFactory = {};
 		
-		stationFactory.email = "";
+		stationFactory.email    = "";
+		stationService.station  = {};
+		stationService.stations = [];
 
     // return station factory object
     return stationFactory;
