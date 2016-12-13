@@ -57,14 +57,14 @@
 	<!-- FOOTER -->
 	<div id="footer">
 <!--		<div id="footer-wrapper" class="nav-wrapper">-->
-	 <div class="row invite" ng-show="sta.checkParams()">
+	 <div class="row invite" ng-show="vm.checkParams()">
 		<div class="col s12 invite-div">
 			Enter a friend's email to invite:
 			<div class="input-field inline">
-				<input id="email" type="text" class="validate" ng-model="sta.inviteEmail">
+				<input id="email" type="text" class="validate" ng-model="vm.stationService.email">
 				<label for="email" data-error="wrong" data-success="right">Email</label>
 			</div>
-			<button class="btn invite-btn" ng-click="sta.userInvite()">INVITE</button>
+			<button class="btn invite-btn" ng-click="vm.userInvite()">INVITE</button>
 		</div>
 	</div>
 <!--		</div>-->
@@ -76,6 +76,7 @@
   <script src="/services/auth.token.js"></script>
   <script src="/services/auth.interceptor.js"></script>
   <script src="/services/auth.service.js"></script>
+  <script src="/services/station.service.js"></script>
   <script src="/services/user.dataservice.js"></script>
   <script src="/controllers/main_controller.js"></script>
   <script src="/controllers/login_controller.js"></script>

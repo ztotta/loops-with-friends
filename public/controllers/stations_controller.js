@@ -7,20 +7,16 @@
 //			.config(['$locationProvider', function($locationProvider) 
 //				{ $locationProvider.html5Mode({ enabled: true, requireBase: false }); }])
 
-  StationsController.$inject = ["$state", "userDataService", "$log", "$http", "$stateParams", "authService"];
+  StationsController.$inject = ["$state", "userDataService", "$log", "$http", "$stateParams", "authService", "stationService"];
 
-  function StationsController($state, userDataService, $log, $http, $stateParams, authService) {
+  function StationsController($state, userDataService, $log, $http, $stateParams, authService, stationService) {
     var vm = this;
 
-    vm.currentUser = userDataService.user;
+    vm.currentUser    = userDataService.user;
+		vm.stationService = stationService;
 		
     vm.stations   = [];
 		vm.station    = {};
-
-//    vm.newStation = {
-//      name: ['Convoluted','Knotted','Looping','Curling', 'Whorling', 'Twirling', 'Swirling'][Math.floor(7 * Math.random())] + '-' + ['Jackal','Hyena','Swordsmith','Pangolin','Muskrat','Canyon','Arch', 'Archduke', 'Baron'][Math.floor(9 * Math.random())] + Math.floor(Math.random() * (99 - 10)) + 10,
-//			user: userDataService.user._id
-//    };
 
     vm.editStation = {
       name: "",
@@ -35,9 +31,8 @@
     vm.postStation        = postStation;
 		vm.setStepPromises    = setStepPromises;
 		vm.playStep           = playStep;
-		vm.checkParams        = checkParams;
-		vm.userInvite					= userInvite;
-		vm.inviteEmail				= "";
+//		vm.checkParams        = checkParams;
+//		vm.userInvite					= userInvite;
 		
 		// Pull in specific station for show route:
 		if ($stateParams.id) {
@@ -100,13 +95,14 @@
       })
     }
 		
-		function userInvite() {
-			console.log(vm.station);
-			$http.put('/api/users/invite/' + vm.inviteEmail, {stationId: vm.station._id, email: vm.inviteEmail})
-				.then(function(response) {
-					console.log("inviteUser response: ", response);
-				});
-		}
+//		function userInvite() {
+////			console.log(vm.station);
+//			console.log(vm.station);
+//			$http.put('/api/users/invite/' + vm.stationService.email, {stationId: vm.station._id, email: vm.stationService.email})
+//				.then(function(response) {
+//					console.log("inviteUser response: ", response);
+//				});
+//		}
 		
 		vm.stepOnOff = function(step) {
 			step.on = !step.on;
@@ -158,11 +154,11 @@
 			}
 		}
 		
-		function checkParams() {
-			if ($stateParams.id) {
-				return true
-			}
-		}
+//		function checkParams() {
+//			if ($stateParams.id) {
+//				return true
+//			}
+//		}
 		
     vm.$state = $state;
   }
