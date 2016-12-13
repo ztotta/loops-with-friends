@@ -33,10 +33,11 @@
     vm.updateStation      = updateStation;
     vm.updateStation      = updateStation;
     vm.postStation        = postStation;
-    vm.resetEditForm 		  = resetEditForm;
 		vm.setStepPromises    = setStepPromises;
 		vm.playStep           = playStep;
 		vm.checkParams        = checkParams;
+		vm.userInvite					= userInvite;
+		vm.inviteEmail				= "";
 		
 		// Pull in specific station for show route:
 		if ($stateParams.id) {
@@ -62,8 +63,8 @@
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
         vm.station = response.data;
-				console.log("after getStation => vm.station = ", vm.station)
-				$state.go('station', { id: response.data._id })
+				console.log("vm.station._id: ", vm.station)
+//				$state.go('station', { id: response.data._id })
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);
       });
@@ -93,22 +94,19 @@
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.station._id, vm.station).then(function(response) {
-				console.log("completed updateStation!")
-				console.log("update response.data: ", response.data)
 				vm.station = response.data
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
     }
-
-    function resetEditForm() {
-      vm.stationCategory = '';
-      vm.stationName = '';
-      vm.editStation = {
-        name: "",
-        category: ""
-      };
-    }
+		
+		function userInvite() {
+			console.log(vm.station);
+			$http.put('/api/users/invite/' + vm.inviteEmail, {stationId: vm.station._id, email: vm.inviteEmail})
+				.then(function(response) {
+					console.log("inviteUser response: ", response);
+				});
+		}
 		
 		vm.stepOnOff = function(step) {
 			step.on = !step.on;
@@ -140,7 +138,7 @@
 					vm.station.stationInstruments.forEach((instr) => {
 						playStep(instr)
 					})
-					if (true) { // breakpoint for global pause
+					if (true) { // eventual breakpoint for global pause
 						setStepPromises();
 					}
 				})

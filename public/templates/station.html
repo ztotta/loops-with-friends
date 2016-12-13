@@ -1,4 +1,4 @@
-<div class="container" ng-controller="StationsController as sta">
+<div class="container">
 
 	<div class="row panel" id="control-panel">
 			<div class="col s4 knob-global panel-button" ng-repeat="control in sta.station.globalControls" ng-click="sta.globalLoopOn(); control.on = !control.on; sta.updateStation()">{{ control.name }}</div>

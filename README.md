@@ -16,3 +16,4 @@ To do:
 - sockets to listen for updates and update the stations_controller in the public
 	folder.
 	=> then make batch saves on an interval to the DB
+- clean up ng-controller distribution

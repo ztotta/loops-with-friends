@@ -15,12 +15,13 @@ var		StationsCtrl = require('../controllers/stations'),
 //||||||||||||||||||||||||||--
 // USERS CRUD SERVICES
 //||||||||||||||||||||||||||--
-router.post('/login',                               AuthsCtrl.userAuth);
-router.get('/users',                                UsersCtrl.usersAll);
-router.post('/users',                               UsersCtrl.userCreate);
-router.get('/users/:id',     AuthsCtrl.tokenVerify, UsersCtrl.userShow);
-router.put('/users/:id',     AuthsCtrl.tokenVerify, UsersCtrl.userUpdate);
-router.delete('/users/:id',  AuthsCtrl.tokenVerify, UsersCtrl.userDelete);
+router.post('/login',                                         AuthsCtrl.userAuth);
+router.get('/users',                                          UsersCtrl.usersAll);
+router.post('/users',                                         UsersCtrl.userCreate);
+router.get('/users/:id',     					 AuthsCtrl.tokenVerify, UsersCtrl.userShow);
+router.put('/users/:id',     					 AuthsCtrl.tokenVerify, UsersCtrl.userUpdate);
+router.put('/users/invite/:email',     AuthsCtrl.tokenVerify, UsersCtrl.userInvite);
+router.delete('/users/:id',  					 AuthsCtrl.tokenVerify, UsersCtrl.userDelete);
 
 //||||||||||||||||||||||||||--
 // STATIONS CRUD SERVICES
