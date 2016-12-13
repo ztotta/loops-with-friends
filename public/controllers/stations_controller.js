@@ -45,18 +45,14 @@
 		}
 
 		// Pull in list of stations upon loading home page (need to hide within conditional):
-		console.log("WTF DUDES!", userDataService.user)
     if (userDataService.user._id)	{
 			vm.user = userDataService.user;
-			console.log(vm.user);
-			console.log('getStations...')
 			getStations();
 		}
 		
 		function getStations() {
 			 $http.get('/api/users/' + userDataService.user._id).then(function(response) {
 					vm.stations = response.data.userStations
-					console.log("getStations, userStations: ", response.data.userStations)
       	}, function(errRes) {
         	console.error('Error retrieving station.', errRes);
       	});
@@ -66,6 +62,7 @@
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
         vm.station = response.data;
+				console.log("after getStation => vm.station = ", vm.station)
 				$state.go('station', { id: response.data._id })
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);
@@ -86,7 +83,6 @@
 				user: userDataService.user._id
     	})
 				.then(function(response) {
-					console.log("postStation => .then => response.data = ", response.data)
 					$http.put('/api/users/' + userDataService.user._id, {stationId: response.data._id})
 						.then(function(response) {
 							vm.stations = response.data.userStations;
@@ -95,15 +91,19 @@
 				})
     }
 
-    function updateStation(id) {
-      $http.put('/api/stations/' + id, vm.editStation).then(function(response) {
-        vm.editStation = {
-          name: "",
-          category: ""
-        };
+//		// update the station every 5 seconds:
+//		setInterval(() => {
+//			updateStation();
+//		}, 5000)
+		
+    function updateStation() {
+      $http.put('/api/stations/' + vm.station._id, vm.station).then(function(response) {
+				console.log("completed updateStation!")
+				console.log("update response.data: ", response.data)
+				vm.station = response.data
       }, function(errRes) {
         console.log('Error updating station.', errRes);
-      }).then(getStations);
+      })
     }
 
     function resetEditForm() {
@@ -117,6 +117,7 @@
 		
 		vm.stepOnOff = function(step) {
 			step.on = !step.on;
+			updateStation();
 		};
 		
 		vm.stepPressed = function(step) {

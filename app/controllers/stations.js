@@ -119,25 +119,25 @@ var stationCreate = function(req, res) {
 // UPDATE STATION
 //||||||||||||||||||||||||||--
 var stationUpdate = function(req, res) {
-  var id = req.params.id;
+  var id = req.body._id;
+//	console.log("var id: ", id)
 
   Station.findById(id, function(err, station) {
 
-    if (err) {
+    if (err) { 
       res.send(err);
     }
 
-    // set the new station information if it exists in the request
-    if (req.body.name) station.name = req.body.name;
-    if (req.body.category) station.category = req.body.category;
-
+		if (req.body.globalControls) 			station.globalControls 		  = req.body.globalControls;
+    if (req.body.stationInstruments)  station.stationInstruments  = req.body.stationInstruments;
+		
     // save the station
     station.save(function(err, updatedStation) {
       if (err) {
         res.send(err);
       }
       // log a message
-      console.log("Oh, that's the station!");
+      console.log("Updated the station!");
       // return the station
       res.json(updatedStation);
     });
