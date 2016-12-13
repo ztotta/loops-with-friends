@@ -57,4 +57,25 @@ app.use(function(err, req, res, next) {
 });
 
 
+//// === SOCKETS === //
+//var io = require('socket.io')();
+//
+//// Listen for new connections here
+//	io.sockets.on('connection', function(socket) {
+//  
+//		console.log('Client connected to socket.io!');
+//
+//		socket.on('station_update', function(data) {
+//			socket.emit('station_update', data)
+//		});
+//
+//		socket.on('station_update_ack', function (data, callback) {
+//			callback(data);
+//		});
+//	
+//});
+
+//module.exports = io;
+
+
 module.exports = app;

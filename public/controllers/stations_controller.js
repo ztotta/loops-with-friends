@@ -4,45 +4,29 @@
   angular
       .module("loopsApp")
       .controller("StationsController", StationsController)
-//			.config(['$locationProvider', function($locationProvider) 
-//				{ $locationProvider.html5Mode({ enabled: true, requireBase: false }); }])
 
-  StationsController.$inject = ["$state", "userDataService", "$log", "$http", "$stateParams", "authService", "stationService"];
+  StationsController.$inject = ["$state", "userDataService", "$log", "$http", "$stateParams", "authService", "stationService", "$scope"];
 
-  function StationsController($state, userDataService, $log, $http, $stateParams, authService, stationService) {
+  function StationsController($state, userDataService, $log, $http, $stateParams, authService, stationService, $scope) {
     var vm = this;
 
-    vm.currentUser    = userDataService.user;
-		vm.stationService = stationService;
+		// === CONTROLLER OBJ/ARR === //
+    vm.currentUser        = userDataService.user;
+		vm.stationService     = stationService;
 
-//    vm.getStations        = getStations;
+		// === CONTROLLER FUNCTIONS === //
     vm.getStation         = getStation;
-//    vm.deleteStation      = deleteStation;
     vm.updateStation      = updateStation;
     vm.updateStation      = updateStation;
-//    vm.postStation        = postStation;
 		vm.setStepPromises    = setStepPromises;
 		vm.playStep           = playStep;
+		
 		
 		// Pull in specific station for show route:
 		console.log($stateParams)
 		if ($stateParams.id) {
 			vm.getStation($stateParams.id);
 		}
-
-		// Pull in list of stations upon loading home page (need to hide within conditional):
-//    if (userDataService.user._id)	{
-//			vm.user = userDataService.user;
-//			getStations();
-//		}
-		
-//		function getStations() {
-//			 $http.get('/api/users/' + userDataService.user._id).then(function(response) {
-//					vm.stationService.stations = response.data.userStations
-//      	}, function(errRes) {
-//        	console.error('Error retrieving station.', errRes);
-//      	});
-//		}
 		
 		// Initiate station show route:
 		function getStation(stationId) {
@@ -53,36 +37,28 @@
         console.error('Error retrieving station.', errRes);
       });
     }
-
-//    function deleteStation(id) {
-//      $http.delete('/api/stations/' + id).then(function(response) {
-//					getStations();
-//      }, function(errRes) {
-//        console.error('Error deleting station.', errRes);
-//      })
-//    }
-
-//    function postStation() {
-//      $http.post('/api/stations', {
-//				name: ['Convoluted','Knotted','Looping','Curling', 'Whorling', 'Twirling', 'Swirling'][Math.floor(7 * Math.random())] + '-' + ['Jackal','Hyena','Swordsmith','Pangolin','Muskrat','Canyon','Arch', 'Archduke', 'Baron'][Math.floor(9 * Math.random())] + Math.floor(Math.random() * (99 - 10)) + 10,
-//				user: userDataService.user._id
-//    	})
-//				.then(function(response) {
-//					$http.put('/api/users/' + userDataService.user._id, {stationId: response.data._id})
-//						.then(function(response) {
-//							vm.stationService.stations = response.data.userStations;
-//							$state.go('station');
-//						});
-//				})
-//    }
+		
+		// === SOCKETS === //
+		vm.socket             = io();
+		console.log("socket: ", vm.socket);
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
-				vm.stationService.station = response.data
+//				vm.stationService.station = response.data // response.data = state of updated station
+				
+				// Socket emits the new state of the station after updating the database:
+				vm.socket.emit('station_update', response.data);
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
     }
+		
+		// Listening for station_update from server:
+		vm.socket.on('station_update', function (uppedStation) {
+			vm.stationService.station = uppedStation;
+			$scope.$apply();
+		});
+		// =================== //
 		
 		vm.stepOnOff = function(step) {
 			step.on = !step.on;
@@ -133,6 +109,9 @@
 				}
 			}
 		}
+		
+		
+		
 		
     vm.$state = $state;
   }

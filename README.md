@@ -23,3 +23,5 @@ Bugs:
 	- 'Email' label hangs back, or isn't there in the first place
 	- need a way to inform the user if that friend hasn't registered yet, or if the
 		invite was successful
+- users can invite themselves and it just repeats the station on their list
+	- when one is deleted, all the repeats disappear, as well

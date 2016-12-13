@@ -13,7 +13,6 @@
     vm.login       = login;
     vm.isLoggedIn  = authService.isLoggedIn;
     vm.currentUser = userDataService.user;
-//		vm.getStations = getStations;
 
     // Form data for login
     vm.loginData;
