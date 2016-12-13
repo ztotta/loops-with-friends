@@ -99,7 +99,7 @@ var stationCreate = function(req, res) {
 	var station                    = new Station();   // create a new instance of the Station model
 
   station.name                   = req.body.name;
-  station.category               = req.body.category;
+//  station.user              		 = req.body.user;
 	station.stationInstruments     = instruments;
 	station.globalControls         = globalControls;
 

@@ -80,15 +80,15 @@ var userUpdate = function(req, res) {
         if (req.body.name)       		user.name = req.body.name;
         if (req.body.email) 				user.email = req.body.email;
         if (req.body.password)    	user.password = req.body.password;
-//        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
+        if (req.body.stationId)    	user.userStations.push(req.body.stationId);
 
         // save the user
-        user.save(function(err) {
-					console.log(user)
-          if (err) res.send(err);
-
-          // return a message
-          res.json({ message: 'User updated!' });
+        user.save(function(err, user) {
+          if (err) res.json(err);
+					User.populate(user, {path: "userStations"}, function(err, uppedUser){
+						if (err) res.json(err);
+          	res.json({ message: 'User updated!', userStations: uppedUser.userStations});
+					});
         });
   });
 }
