@@ -4,9 +4,9 @@ var User        = require('../models/user.js'),
     env         = require('../config/environment'),
     superSecret = env.superSecret;
 
-//||||||||||||||||||||||||||--
-// AUTHENTICATE USER
-//||||||||||||||||||||||||||--
+// ========================= //
+// === AUTHENTICATE USER === //
+// ========================= //
 var userAuth = function (req, res, next) {
   // find the user
   User.findOne({
@@ -57,9 +57,9 @@ var userAuth = function (req, res, next) {
     });
   };
 
-//||||||||||||||||||||||||||--
-// VERIFIY TOKEN
-//||||||||||||||||||||||||||--
+// ===================== //
+// === VERIFIY TOKEN === //
+// ===================== //
 var tokenVerify = function(req, res, next) {
   // do logging
   console.log('Somebody just accessed the Stations API!');

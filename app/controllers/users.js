@@ -4,9 +4,9 @@ var User        = require('../models/user.js'),
     env         = require('../config/environment'),
     superSecret = env.superSecret;
 
-//||||||||||||||||||||||||||--
-// CREATE USER
-//||||||||||||||||||||||||||--
+// =================== //
+// === CREATE USER === //
+// =================== //
 var userCreate = function(req, res) {
     var user          = new User();   // create a new instance of the User model
     user.name         = req.body.name;  // set the users name (comes from the request)
@@ -44,9 +44,9 @@ var userCreate = function(req, res) {
 
 };
 
-//||||||||||||||||||||||||||--
-// GET USER (SHOW)
-//||||||||||||||||||||||||||--
+// ======================= //
+// === GET USER (SHOW) === //
+// ======================= //
 var userShow = function(req, res) {
   User.findById(req.params.id).populate('userStations').exec(function(err, user) {
         if (err) res.send(err);
@@ -56,9 +56,9 @@ var userShow = function(req, res) {
   });
 };
 
-//||||||||||||||||||||||||||--
-// GET USERS (INDEX)
-//||||||||||||||||||||||||||--
+// ========================= //
+// === GET USERS (INDEX) === //
+// ========================= //
 var usersAll = function(req, res) {
   User.find({}, function(err, users) {
         if (err) res.send(err);
@@ -67,31 +67,6 @@ var usersAll = function(req, res) {
         res.json(users);
   });
 }
-
-//||||||||||||||||||||||||||--
-// UPDATE USER
-//||||||||||||||||||||||||||--
-//var userUpdate = function(req, res) {
-//	console.log("req.body.email: ", req.body.email)
-//	console.log("req.body.stationId: ", req.body.stationId)
-//  User.findOne({email: req.body}, function(err, user) {
-//
-//        if (err) res.send(err);
-//
-//        // set the new user information if it exists in the request
-//        if (req.body.stationId) user.userStations.push(req.body.stationId);
-//
-//        // save the user
-//        user.save(function(err, user) {
-//          if (err) res.json(err);
-//					User.populate(user, {path: "userStations"}, function(err, uppedUser){
-//						console.log("upped user: ", uppedUser)
-//						if (err) res.json(err);
-//          	res.json({ message: 'User updated!', userStations: uppedUser.userStations});
-//					});
-//        });
-//  });
-//}
 
 var userUpdate = function(req, res) {
   User.findById(req.params.id, function(err, user) {
@@ -112,9 +87,9 @@ var userUpdate = function(req, res) {
   });
 }
 
-//||||||||||||||||||||||||||--
-// INVITE USER
-//||||||||||||||||||||||||||--
+// =================== //
+// === INVITE USER === //
+// =================== //
 var userInvite = function(req, res) {
   User.findOne({email: req.body.email}, function(err, user) {
 		
@@ -141,9 +116,9 @@ var userInvite = function(req, res) {
 }
 
 
-//||||||||||||||||||||||||||--
-// DELETE USER
-//||||||||||||||||||||||||||--
+// =================== //
+// === DELETE USER === //
+// =================== //
 var userDelete = function(req, res) {
   User.remove({
         _id: req.params.id
@@ -154,9 +129,9 @@ var userDelete = function(req, res) {
   });
 }
 
-//||||||||||||||||||||||||||--
-// EXPORT MODULE
-//||||||||||||||||||||||||||--
+// ===================== //
+// === EXPORT MODULE === //
+// ===================== //
 module.exports = {
   userCreate:   userCreate,
   userShow:     userShow,

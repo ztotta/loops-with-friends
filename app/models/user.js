@@ -3,9 +3,9 @@ var mongoose     = require('mongoose'),
     Station      = require('./station'),
     bcrypt       = require('bcrypt-nodejs');
 
-//||||||||||||||||||||||||||--
-// CREATE USER SCHEMA
-//||||||||||||||||||||||||||--
+// ========================== //
+// === CREATE USER SCHEMA === //
+// ========================== //
 var UserSchema   = new Schema({
 	name:            { type: String, required: true },
 	email:       		 {

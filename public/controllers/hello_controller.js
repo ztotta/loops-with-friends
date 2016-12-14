@@ -54,7 +54,7 @@
 			})
 		 }
 
-			vm.$state = $state;
+//			vm.$state = $state;
 		}
 
 })();

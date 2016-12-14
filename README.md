@@ -9,18 +9,19 @@ Current issues:
 	 
 To do:
 - station renaming: put route, grabs station by its Id and updates it's name
-- clean up ng-controller distribution
+- clean up/refactor ng-controller distribution
 - namespace socket.io rooms legitimately
 	=> http://bit.ly/2hjufCv
 - EQ instruments, more instruments, etc.
-- global i/o functionality
 - mute instruments when not shown?
+- fix navbar collapsing fiasco
+	- get actual angular files
 
 
 Bugs:
 - email form:
 	- 'Email' label hangs back, or isn't there in the first place
-	- need a way to inform the user if that friend hasn't registered yet, or if the
-		invite was successful
 - users can invite themselves and it just repeats the station on their list
 	- when one is deleted, all the repeats disappear, as well
+- rethink updating on every click?
+	- makes it glitchy when changes are made mid-loop

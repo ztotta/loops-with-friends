@@ -1,9 +1,9 @@
 // Require the model/s you're controlling
 var Station = require("../models/station");
 
-//||||||||||||||||||||||||||--
-//  GET STATION (SHOW)
-//||||||||||||||||||||||||||--
+// ========================== //
+// === GET STATION (SHOW) === //
+// ========================== //
 var stationShow = function(req, res, next){
   var id = req.params.id;
 
@@ -17,9 +17,9 @@ var stationShow = function(req, res, next){
   });
 };
 
-//||||||||||||||||||||||||||--
-// GET STATIONS (INDEX)
-//||||||||||||||||||||||||||--
+// ============================ //
+// === GET STATIONS (INDEX) === //
+// ============================ // 
 var stationIndex = function(req, res) {
 	
 	console.log(req)
@@ -34,9 +34,9 @@ var stationIndex = function(req, res) {
   });
 }
 
-//||||||||||||||||||||||||||--
-// CREATE STATION
-//||||||||||||||||||||||||||--
+// ====================== //
+// === CREATE STATION === //
+// ====================== //
 var stationCreate = function(req, res) {
   
 		//// Assign arrays:
@@ -117,9 +117,9 @@ var stationCreate = function(req, res) {
   });
 };
 
-//||||||||||||||||||||||||||--
-// UPDATE STATION
-//||||||||||||||||||||||||||--
+// ====================== //
+// === UPDATE STATION === //
+// ====================== //
 var stationUpdate = function(req, res) {
   var id = req.body._id;
 //	console.log("var id: ", id)
@@ -146,9 +146,9 @@ var stationUpdate = function(req, res) {
   });
 }
 
-//||||||||||||||||||||||||||--
-// DELETE STATION
-//||||||||||||||||||||||||||--
+// ====================== //
+// === DELETE STATION === //
+// ====================== //
 var stationDelete = function(req, res) {
 
   var id = req.params.id;

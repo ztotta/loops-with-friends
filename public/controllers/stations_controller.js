@@ -23,7 +23,6 @@
 		vm.playStep           = playStep;
 		vm.loopToggle         = loopToggle;
 		
-		
 		// Pull in specific station for show route:
 		if ($stateParams.id) {
 			vm.getStation($stateParams.id);
@@ -38,10 +37,10 @@
       });
     }
 		
+		// =============== //
 		// === SOCKETS === //
-		vm.socket             = io();
-		
-		console.log("socket: ", vm.socket);
+		// =============== //
+		vm.socket = io();
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
@@ -59,7 +58,9 @@
 				$scope.$apply();
 			}
 		});
-		// =================== //
+		// =============== //
+		// =============== //
+		// =============== //
 		
 		vm.stepOnOff = function(step) {
 			if (step.instrument === "KICK" || step.instrument === "SNARE" || step.instrument === "HIHAT") {
@@ -94,7 +95,7 @@
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						playStep(instr)
 					})
-					if (vm.loopOn) { // eventual breakpoint for global pause
+					if (vm.loopOn) { 
 						if (Math.floor(vm.i) < 63) {
 							setStepPromises();
 						}
@@ -116,7 +117,7 @@
 			if (!instr.muted) {	
 				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.name != "HIHAT" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
 					if (instr.name === "KICK") { 
-						kick.play({pitch: 80}) 
+						kick.play({pitch: 82.41}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
 					else if (instr.name === "HIHAT") { hihat.play() }
@@ -132,7 +133,7 @@
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 349.2}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 392.0}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 493.9}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }plunk
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }
 					}
 					else if (instr.name === "STINGRAY") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { stingray.play({pitch: 329.6}) }
@@ -145,7 +146,6 @@
 			}
 		}
 		
-    vm.$state = $state;
   }
 
 })();
