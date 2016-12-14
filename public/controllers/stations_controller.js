@@ -69,8 +69,22 @@
 		});
 		// =================== //
 		
+//		vm.stepOnOff = function(step) {
+//			if (inst)
+//			step.on = !step.on;
+//			if (step.pressCount <= 3) { step.pressCount ++ }
+//			else { step.pressCount = 0 }
+//			console.log(step.pressCount)
+//		};
 		vm.stepOnOff = function(step) {
-			step.on = !step.on;
+			if (step.instrument === "KICK" || step.instrument === "SNARE") {
+				step.on = !step.on;
+			}
+			else {
+				if (step.pressCount <= 3) { step.pressCount ++ }
+				else { step.pressCount = -1 }
+				console.log(step.pressCount)
+			}
 		};
 		
 		vm.stepPressed = function(step) {
@@ -110,12 +124,18 @@
 
 		function playStep(instr) {
 			if (!instr.muted) {	
-				if (instr.steps[Math.floor(vm.i)].on) {
+				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
 					if (instr.name === "KICK") { 
 						kick.play({pitch: 80}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
-					else if (instr.name === "HANDPAN") { handpan.play({pitch: 440}) }
+					else if (instr.name === "HANDPAN") { 
+						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 440.0}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 493.9}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 554.4}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 659.3}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 740.0}) }
+					}
 				}
 			}
 		}

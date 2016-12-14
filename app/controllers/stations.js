@@ -75,7 +75,9 @@ var stationCreate = function(req, res) {
 					id: `${instrument.name}${i}`,
 					on: false,
 					pressed: false,
-					quarterNote: quarterNote
+					pressCount: -1,
+					quarterNote: quarterNote,
+					instrument: `${instrument.name}`
 				}
 			);
 		};

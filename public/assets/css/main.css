@@ -126,6 +126,19 @@ nav {
 	background-color: #ffdbec;
 }
 
+.A-note {
+	background-color: black;
+}.B-note {
+	background-color: red;
+}.C-note {
+	background-color: blue;
+}.E-note {
+	background-color: green;
+}
+.F-note {
+	background-color: yellow;
+}
+
 .step-panel {
 	height: 90%;
 	display: block;
