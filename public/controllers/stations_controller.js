@@ -120,7 +120,8 @@
 						kick.play({pitch: 82.41}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
-					else if (instr.name === "HIHAT") { hihat.play() }
+//					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() * 1.25 - 1)}) }
+					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() - 1)}) }
 					else if (instr.name === "PLUNK") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { plunk.play({pitch: 82.41}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { plunk.play({pitch: 87.30}) }
@@ -129,11 +130,11 @@
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { plunk.play({pitch: 130.8}) }
 					}
 					else if (instr.name === "HANDPAN") { 
-						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 329.6}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 349.2}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 392.0}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 493.9}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }
+						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 329.6, panning: Math.random() }) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 349.2, panning: Math.random() }) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 392.0, panning: Math.random() }) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 493.9, panning: Math.random() }) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3, panning: Math.random() }) }
 					}
 					else if (instr.name === "STINGRAY") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { stingray.play({pitch: 329.6}) }

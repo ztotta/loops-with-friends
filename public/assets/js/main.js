@@ -99,34 +99,34 @@ var handpan = new Wad({
 var square   = new Wad({ 
 	source : 'square', 
 	env     : {      			 
-        attack  : 0.02, 	
-        decay   : 0.15,     
+        attack  : 0.50, 	
+        decay   : 0.25,     
         sustain : 0.15,     
         hold    : 0.0,     
-        release : 0.5     
+        release : 1.0     
     },
 		delay   : {
         delayTime : .08,  
-        wet       : .50, 
-        feedback  : .75, 
+        wet       : .75, 
+        feedback  : .50, 
     },
-		volume: 0.15
+		volume: 0.06
 })
 var triangle = new Wad({ 
 	source : 'triangle', 
 	env     : {      			 
-        attack  : 0.02, 	
-        decay   : 0.15,     
+        attack  : 0.50, 	
+        decay   : 0.25,     
         sustain : 0.15,     
         hold    : 0.0,     
-        release : 0.5     
+        release : 1.0     
     },
 	delay   : {
         delayTime : .08,  
-        wet       : .50, 
-        feedback  : .75, 
+        wet       : .75, 
+        feedback  : .50, 
     },
-		volume: 0.35
+		volume: 0.06
 })
 
 var stingray = new Wad.Poly()

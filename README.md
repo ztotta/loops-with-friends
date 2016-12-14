@@ -12,11 +12,7 @@ To do:
 - clean up/refactor ng-controller distribution
 - namespace socket.io rooms legitimately
 	=> http://bit.ly/2hjufCv
-- EQ instruments, more instruments, etc.
-- mute instruments when not shown?
 - fix navbar collapsing fiasco
-	- get actual angular files
-
 
 Bugs:
 - email form:

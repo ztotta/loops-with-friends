@@ -13,13 +13,11 @@
 	<script src="/assets/js/wad.js"></script>
 	<script src="assets/js/main.js"></script>
   <!-- MATERIALIZE -->
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+		<link rel="stylesheet" href="assets/css/materialize.css">
+		<script src="assets/js/materialize.min.js"></script>
 	<!-- ANGULAR -->
-				<script src="assets/js/angular.min.js"></script>
-				<script src="assets/js/ui-router.min.js"></script>
+		<script src="assets/js/angular.min.js"></script>
+		<script src="assets/js/ui-router.min.js"></script>
 </head>
 <body ng-controller="MainController as vm" ng-cloak>
  <div>
@@ -29,7 +27,6 @@
 			<a ui-sref="hello" class="brand-logo hide-on-med-and-down">LOOPS W/ FRIENDS</a>
 			<a ui-sref="hello" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Loops W/ Friends</i></a>
 			<a data-activates="mobile-demo" class="button-collapse button-nav-collapse"><div class="btn material-icons" ng-click="vm.logout()">Logout</div></a>
-<!--			<a data-activates="mobile-demo" class="button-collapse"><div class="fixed-action-btn horizontal" ng-click="vm.logout()">Logout</div></a>-->
 			<ul class="right hide-on-med-and-down">
 				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
 					<a>{{ vm.stationService.station.name }}</a>
