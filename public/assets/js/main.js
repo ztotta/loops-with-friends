@@ -64,7 +64,7 @@ var handpan = new Wad({
         hold    : 0.0,     // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
         release : 0.5      // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
     },
-		volume: 0.75
+		volume: 0.6
 })
 
 var stingray = new Wad({

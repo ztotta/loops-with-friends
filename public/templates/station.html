@@ -1,13 +1,13 @@
 <div class="container">
 
 	<div class="row panel" id="control-panel">
-			<div class="col s4 knob-global panel-button" ng-repeat="control in sta.stationService.station.globalControls" ng-click="sta.globalLoopOn(); control.on = !control.on; sta.updateStation()">{{ control.name }}</div>
+			<div class="col s4 knob-global panel-button" ng-repeat="control in sta.stationService.station.globalControls" ng-click="sta.loopOff(); control.on = !control.on; sta.updateStation()">{{ control.name }}</div>
 		<div class="col s12" id="on-off-panel">
-			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; sta.updateStation()">{{ instrument.name }}</button>
+			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; sta.updateStation(); instrument.muted = !instrument.muted">{{ instrument.name }}</button>
 		</div>
 	</div>
-	<button ng-click="sta.setStepPromises()">SET STEP PROMISES</button>
-	<button ng-click="sta.globalLoopOn()">STOP</button>
+	<button ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.loopOn">LOOP ON</button>
+	<button ng-click="sta.loopToggle()" ng-show="sta.loopOn">LOOP OFF</button>
 
 	<div class="row" ng-repeat="instrument in sta.stationService.station.stationInstruments" ng-show="instrument.show"> 
 		<div class="panel instrument-panel">
