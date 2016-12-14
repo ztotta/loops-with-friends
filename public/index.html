@@ -46,9 +46,6 @@
 				<li ng-show="vm.isLoggedIn()">
 					<a class="btn" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</a>
 				</li>
-				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
-					<a ui-sref="register">Register</a>
-				</li>
 <!--
 				<li role="presentation" ui-sref-active="active" ng-show="vm.isLoggedIn()">
 					<a ui-sref="homePage">New Station</a>

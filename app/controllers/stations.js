@@ -41,7 +41,7 @@ var stationCreate = function(req, res) {
   
 		//// Assign arrays:
 	var instruments = [];
-	var instrumentsList = ["KICK", "SNARE", "HIHAT-CLOSED", "HIHAT-OPEN", "RIMSHOT", "CLAP"];
+	var instrumentsList = ["KICK", "SNARE", "HIHAT-CLOSED", "HIHAT-OPEN", "RIMSHOT", "HANDPAN"];
 
 	instrumentsList.forEach(instrument => {
 		createInstruments(instrument);

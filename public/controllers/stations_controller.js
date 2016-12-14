@@ -112,9 +112,10 @@
 			if (!instr.muted) {	
 				if (instr.steps[Math.floor(vm.i)].on) {
 					if (instr.name === "KICK") { 
-						kick.play() 
+						kick.play({pitch: 80}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
+					else if (instr.name === "HANDPAN") { handpan.play({pitch: 440}) }
 				}
 			}
 		}
