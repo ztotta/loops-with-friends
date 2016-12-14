@@ -49,14 +49,6 @@ var plunk = new Wad({
 
 var handpan = new Wad({
     source : 'sine',
-//    tuna   : {
-//						Chorus : {
-//								intensity: 0.25,  //0 to 1
-//								rate: 4,         //0.001 to 8
-//								stereoPhase: 0,  //0 to 180
-//								bypass: 0
-//						}
-//    },
 		env     : {      			 // This is the ADSR envelope.
         attack  : 0.075, 	 // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
         decay   : 0.1,     // Time in seconds from peak volume to sustain volume.

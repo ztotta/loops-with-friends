@@ -84,18 +84,8 @@
 			Promise.all(vm.stationService.station.stationInstruments.map(instr => {
 				var x = new Promise((res, rej) => {
 					setTimeout(() => {
-						if (Math.floor(vm.i) < 63) {
 							vm.i += 0.16666666666667;
 							res();
-						} else {
-								vm.i = 0;
-								res();
-//							setTimeout(() => {
-////								vm.i = -1;
-//								vm.i = 0;
-//							}, 115.38)
-////							rej("reject");
-						}
 					}, 100)
 				})
 				return x;
@@ -105,7 +95,13 @@
 						playStep(instr)
 					})
 					if (vm.loopOn) { // eventual breakpoint for global pause
-						setStepPromises();
+						if (Math.floor(vm.i) < 63) {
+							setStepPromises();
+						}
+						else {
+								vm.i = -1;
+								setStepPromises();
+						}
 					}
 					else {
 						vm.i = -1;

@@ -6,8 +6,8 @@
 			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; sta.updateStation(); instrument.muted = !instrument.muted">{{ instrument.name }}</button>
 		</div>
 	</div>
-	<button ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.loopOn">LOOP ON</button>
-	<button ng-click="sta.loopToggle()" ng-show="sta.loopOn">LOOP OFF</button>
+	<button class="btn" ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.loopOn">LOOP ON</button>
+	<button class="btn" ng-click="sta.loopToggle()" ng-show="sta.loopOn">LOOP OFF</button>
 
 	<div class="row" ng-repeat="instrument in sta.stationService.station.stationInstruments" ng-show="instrument.show"> 
 		<div class="panel instrument-panel">
