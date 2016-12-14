@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="panel instrument-panel" id="login-panel" ng-hide="vm.isLoggedIn()">
-		<h3>Welcome!</h3>
+		<h3 class="banner-header">WELCOME</h3>
 		<br>
-		<p><strong>To <em>Loop W/ Friends</em>
+		<p class="banner-header"><strong>
 				please <a ui-sref-active="active" ui-sref="register">register</a> or login:</strong></p>
 		<br>
 		<form class="form-inline" ng-submit="vm.login()">
@@ -18,22 +18,21 @@
 		</form>
 	</div>
 	
-<!--
+<div ng-controller="HelloController as hel">	
 	<div class="panel instrument-panel" id="hello-panel" ng-show="vm.isLoggedIn()">
-		<div ng-controller="StationsController as sta">
-			<h2>Welcome {{vm.currentUser.name}}!</h2>
-				<a class="btn" ng-click="sta.postStation()">NEW STATION</a>
+		<div>
+			<h2>Welcome {{hel.userDataService.user.name}}!</h2>
+				<a class="btn" ng-click="hel.postStation()">NEW STATION</a>
 				<hr>
-				
-			 LISTING USER STATIONS 
+
+			<!-- LISTING USER STATIONS -->
 			<ul id="stations">
-				<li ng-repeat="station in sta.stations" class="station-li">
+				<li ng-repeat="station in hel.stationService.stations" class="station-li">
 					<br>
-					<a ng-click="sta.getStation(station._id)"><strong>{{station.name}}</strong></a>
-					<button class="btn btn-danger btn-xs btn-list" ng-click="sta.deleteStation(station._id)">X</button>
+					<a ng-click="hel.goToStation(station._id)"><strong>{{station.name}}</strong></a>
+					<button class="btn btn-danger btn-xs btn-list" ng-click="hel.deleteStation(station._id)">X</button>
 				</li>
-  		</ul>
+			</ul>
 		</div>
 	</div>
 </div>
--->

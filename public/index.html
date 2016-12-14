@@ -6,7 +6,7 @@
   <title>Loops W/ Friends</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lato:bold|Permanent+Marker" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -24,9 +24,9 @@
   
 	<nav>
 		<div class="nav-wrapper">
-			<a ui-sref="hello" class="brand-logo hide-on-med-and-down">LOOPS W/ FRIENDS</a>
+			<a ui-sref="hello" class="brand-logo hide-on-lrg-and-down">LOOPS W/ FRIENDS</a>
 			<a ui-sref="hello" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Loops W/ Friends</i></a>
-			<a data-activates="mobile-demo" class="button-collapse button-nav-collapse"><div class="btn material-icons" ng-click="vm.logout()">Logout</div></a>
+<!--			<a data-activates="mobile-demo" class="button-collapse button-nav-collapse"><div class="btn material-icons" ng-click="vm.logout()">Logout</div></a>-->
 			<ul class="right hide-on-med-and-down">
 				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
 					<a>{{ vm.stationService.station.name }}</a>
@@ -51,6 +51,27 @@
 			</ul>
 		</div>
 	</nav>
+    
+<!--
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+-->
 
     <main class="content" ui-view>
       <!-- PAGE TEMPLATES INSERT HERE -->
@@ -71,6 +92,12 @@
 	</div>
 <!--		</div>-->
 	</div>
+  
+  <script>
+		$('document').ready(function(){
+  		$(".button-collapse").sideNav();
+		})
+	 </script>
 
   <!-- Angular scripts -->
   <script src="/app.module.js"></script>

@@ -16,6 +16,10 @@
 
     // Form data for login
     vm.loginData;
+		
+//		if (vm.currentUser) {
+//			$state.go('hello');
+//		}
 
     function login() {
       authService.login(vm.loginData.email, vm.loginData.password)

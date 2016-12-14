@@ -21,3 +21,4 @@ Bugs:
 	- when one is deleted, all the repeats disappear, as well
 - rethink updating on every click?
 	- makes it glitchy when changes are made mid-loop
+  - glitchy playback...clipping & volume jumps
