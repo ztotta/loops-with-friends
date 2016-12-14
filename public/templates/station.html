@@ -19,9 +19,10 @@
 			</div>
 			<div class="step-panel">
 				<span class="step" ng-repeat="step in instrument.steps" id="{{step.id}}" 
-					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on }"
 					ng-mousedown="sta.stepPressed(step); sta.stepOnOff(step); sta.updateStation()"
-					ng-mouseup="sta.stepPressed(step)"><span class="step-text"></span></span>
+					ng-mouseup="sta.stepPressed(step)"
+					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on }"
+					><span class="step-text"></span></span>
 			</div>
 		</div>
 	</div>

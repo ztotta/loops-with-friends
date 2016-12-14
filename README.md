@@ -17,6 +17,18 @@ To do:
 	folder.
 	=> then make batch saves on an interval to the DB
 - clean up ng-controller distribution
+- namespace socket.io rooms legitimately
+	=> http://bit.ly/2hjufCv
+- add more instruments
+	- how to add melodic instruments? 
+		- clickthrough to select? color changes, as well as source changes
+
+
+
+
+
+
+
 
 Bugs:
 - email form:

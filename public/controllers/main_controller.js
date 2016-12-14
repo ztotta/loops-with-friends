@@ -10,13 +10,13 @@
   function MainController($state, userDataService, $log, authService, stationService, $stateParams, $http) {
     var vm = this;
 
-    vm.userService = userDataService;
-    vm.logout      = authService.logout;
-    vm.isLoggedIn  = authService.isLoggedIn;
-		vm.stationService = stationService;
-		vm.userInvite =  userInvite;
-		vm.checkParams = checkParams;
-		vm.station     = stationService.station;
+    vm.userService        = userDataService;
+    vm.logout             = authService.logout;
+    vm.isLoggedIn         = authService.isLoggedIn;
+		vm.stationService     = stationService;
+		vm.userInvite         = userInvite;
+		vm.checkParams        = checkParams;
+		vm.station            = stationService.station;
 
 		
 		function checkParams() {

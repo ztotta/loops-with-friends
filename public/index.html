@@ -26,14 +26,25 @@
   
 	<nav>
 		<div class="nav-wrapper">
-			<a ui-sref="hello" class="brand-logo">LOOPS W/ FRIENDS</a>
-			<a ui-sref="hello" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">My Station</i></a>
+			<a ui-sref="hello" class="brand-logo hide-on-med-and-down">LOOPS W/ FRIENDS</a>
+			<a ui-sref="hello" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Loops W/ Friends</i></a>
+			<a data-activates="mobile-demo" class="button-collapse button-nav-collapse"><div class="btn material-icons" ng-click="vm.logout()">Logout</div></a>
+<!--			<a data-activates="mobile-demo" class="button-collapse"><div class="fixed-action-btn horizontal" ng-click="vm.logout()">Logout</div></a>-->
 			<ul class="right hide-on-med-and-down">
-				<li role="presentation" ui-sref-active="active">
+				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
+					<a>{{ vm.stationService.station.name }}</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
+					<a ui-sref="hello">My Stations</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
+					<a ui-sref="register">Register</a>
+				</li>
+				<li>
 					<a ui-sref="aboutPage">About</a>
 				</li>
-				<li role="presentation" ui-sref-active="active" ng-show="vm.isLoggedIn()">
-					<a ui-sref="hello">My Stations</a>
+				<li ng-show="vm.isLoggedIn()">
+					<a class="btn" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</a>
 				</li>
 				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
 					<a ui-sref="register">Register</a>
@@ -43,9 +54,6 @@
 					<a ui-sref="homePage">New Station</a>
 				</li>
 -->
-				<li ng-show="vm.isLoggedIn()">
-					<a class="btn" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</a>
-				</li>
 			</ul>
 		</div>
 	</nav>

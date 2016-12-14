@@ -23,7 +23,6 @@
 		
 		
 		// Pull in specific station for show route:
-		console.log($stateParams)
 		if ($stateParams.id) {
 			vm.getStation($stateParams.id);
 		}
@@ -32,7 +31,6 @@
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
         stationService.station = response.data;
-				console.log("vm.stationService.station._id: ", vm.stationService.station)
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);
       });
@@ -40,14 +38,23 @@
 		
 		// === SOCKETS === //
 		vm.socket             = io();
+//		vm.stationNSP         = $stateParams.id;
+		
 		console.log("socket: ", vm.socket);
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
-//				vm.stationService.station = response.data // response.data = state of updated station
 				
 				// Socket emits the new state of the station after updating the database:
 				vm.socket.emit('station_update', response.data);
+//				
+//				// Trying new NSP methodology:
+//				vm.socket.emit('station_update', vm.stationNSP);
+//				var nsp;
+//				setTimeout(function() {
+//					socket = io.connect()
+//				})
+				
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
@@ -55,8 +62,10 @@
 		
 		// Listening for station_update from server:
 		vm.socket.on('station_update', function (uppedStation) {
-			vm.stationService.station = uppedStation;
-			$scope.$apply();
+			if (uppedStation._id === $stateParams.id) {
+				vm.stationService.station = uppedStation;
+				$scope.$apply();
+			}
 		});
 		// =================== //
 		
