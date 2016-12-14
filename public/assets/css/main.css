@@ -137,23 +137,23 @@ nav {
 }
 
 .stepOn {
-	background-color: #ffdbec;
+	background-color: #ffdbec !important;
 }
 
-.A-note {
-	background-color: #a2ddf2;
-}
-.B-note {
-	background-color: #d4bf61;
-}
-.C-note {
-	background-color: #2d8791;
-}
 .E-note {
-	background-color: #de646a;
+	background-color: #a2ddf2 !important;
 }
 .F-note {
-	background-color: #b0383c;
+	background-color: #d4bf61 !important;
+}
+.G-note {
+	background-color: #2d8791 !important;
+}
+.B-note {
+	background-color: #de646a !important;
+}
+.C-note {
+	background-color: #b0383c !important;
 }
 
 .step-panel {
@@ -250,13 +250,13 @@ nav {
 .invite {
 	height: 80%;
 /*	width: 20%;*/
-	margin: 0 auto 10px auto;
+	margin: 0 auto 0 auto;
 }
 
 .invite-div {
 	height: 50px;
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: center;
 }
 
@@ -268,4 +268,8 @@ nav {
 .banner-header {
 	text-align: center;
 	font-family: 'Permanent Marker', cursive;
+}
+
+.btn-inst-off {
+	background-color: #84646A !important;
 }

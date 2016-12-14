@@ -13,6 +13,8 @@ To do:
 - namespace socket.io rooms legitimately
 	=> http://bit.ly/2hjufCv
 - fix navbar collapsing fiasco
+- instructions, pentatonic step-guide
+	- show note name?
 
 Bugs:
 - email form:
@@ -22,3 +24,4 @@ Bugs:
 - rethink updating on every click?
 	- makes it glitchy when changes are made mid-loop
   - glitchy playback...clipping & volume jumps
+- if user leaves page without stopping loop, it keeps going...

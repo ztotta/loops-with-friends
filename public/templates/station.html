@@ -6,7 +6,8 @@
 			<hr>
 			<button class="btn" id="btn-on" ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.loopOn">LOOP ON</button>
 			<button class="btn" id="btn-off" ng-click="sta.loopToggle()" ng-show="sta.loopOn">LOOP OFF</button>
-			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; sta.updateStation(); instrument.muted = !instrument.muted">{{ instrument.name }}</button>
+			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; sta.updateStation(); instrument.muted = !instrument.muted" ng-class="{'btn-inst-off': instrument.muted}">{{ instrument.name }}</button>
+<!--			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off btn-inst-off" ng-click="instrument.show = !instrument.show; sta.updateStation(); instrument.muted = !instrument.muted" ng-show="instrument.muted">{{ instrument.name }}</button>-->
 		</div>
 	</div>
 
@@ -23,8 +24,8 @@
 					ng-mousedown="sta.stepPressed(step); sta.stepOnOff(step); sta.updateStation()"
 					ng-mouseup="sta.stepPressed(step)"
 					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on, 
-						'A-note': step.pressCount === 0, 'B-note': step.pressCount === 1, 
-						'C-note': step.pressCount === 2, 'E-note': step.pressCount === 3, 'F-note': step.pressCount === 4,}">
+						'E-note': step.pressCount === 0, 'F-note': step.pressCount === 1, 
+						'G-note': step.pressCount === 2, 'B-note': step.pressCount === 3, 'C-note': step.pressCount === 4,}">
 					<span class="step-text"></span></span>
 			</div>
 		</div>

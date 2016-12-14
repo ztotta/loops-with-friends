@@ -110,7 +110,7 @@ var square   = new Wad({
         wet       : .75, 
         feedback  : .50, 
     },
-		volume: 0.06
+		volume: 0.045
 })
 var triangle = new Wad({ 
 	source : 'triangle', 
@@ -126,7 +126,7 @@ var triangle = new Wad({
         wet       : .75, 
         feedback  : .50, 
     },
-		volume: 0.06
+		volume: 0.045
 })
 
 var stingray = new Wad.Poly()

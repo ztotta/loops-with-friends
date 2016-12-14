@@ -53,7 +53,7 @@ var stationCreate = function(req, res) {
 			steps: [],
 			muted: false,
 			mutePressed: false,
-			show: false
+			show: true
 		});
 	}
 
