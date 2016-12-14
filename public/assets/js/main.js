@@ -19,7 +19,7 @@ var handpan = new Wad({
 //						}
 //    },
 		env     : {      			 // This is the ADSR envelope.
-        attack  : 0.01, 	 // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+        attack  : 0.075, 	 // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
         decay   : 0.1,     // Time in seconds from peak volume to sustain volume.
         sustain : 0.15,     // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
         hold    : 0.0,     // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
@@ -39,6 +39,17 @@ var kick = new Wad({
 	volume: 1
 })
 
+var bass = new Wad({
+	source: 'sine',
+	env:    {
+						attack: 0.0,
+						decay: 1.2,
+						sustain: 0.0,
+						release: 0.0
+					},
+	volume: 1
+})
+
 
 var sine     = new Wad({ source : 'sine' })
 var square   = new Wad({ source : 'square' })
@@ -50,13 +61,13 @@ tripleOscillator.add(sine).add(square).add(triangle) // Many methods are chainab
 
 var snare = new Wad({ 
 	source: 'noise',
-	env: {
-		attack  : 0.0, 
-  	decay   : 0.05,  
-  	sustain : 0.0,  
-  	hold    : 0.0, 
-  	release : 0.05
-	},
+	env: 		{
+						attack  : 0.0, 
+						decay   : 0.05,  
+						sustain : 0.0,  
+						hold    : 0.0, 
+						release : 0.05
+					},
 	volume: 0.25
 })
 

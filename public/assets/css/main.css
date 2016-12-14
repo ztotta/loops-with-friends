@@ -127,16 +127,19 @@ nav {
 }
 
 .A-note {
-	background-color: black;
-}.B-note {
-	background-color: red;
-}.C-note {
-	background-color: blue;
-}.E-note {
-	background-color: green;
+	background-color: #a2ddf2;
+}
+.B-note {
+	background-color: #d4bf61;
+}
+.C-note {
+	background-color: #2d8791;
+}
+.E-note {
+	background-color: #de646a;
 }
 .F-note {
-	background-color: yellow;
+	background-color: #b0383c;
 }
 
 .step-panel {

@@ -83,9 +83,10 @@
 			else {
 				if (step.pressCount <= 3) { step.pressCount ++ }
 				else { step.pressCount = -1 }
-				console.log(step.pressCount)
 			}
 		};
+		
+		
 		
 		vm.stepPressed = function(step) {
 			step.pressed = !step.pressed;
@@ -130,11 +131,11 @@
 					}
 					else if (instr.name === "SNARE") { snare.play() }
 					else if (instr.name === "HANDPAN") { 
-						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 440.0}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 493.9}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 554.4}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 659.3}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 740.0}) }
+						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 329.6}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 349.2}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 392.0}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 493.9}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }
 					}
 				}
 			}
