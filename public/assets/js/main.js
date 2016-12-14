@@ -1,12 +1,51 @@
-//// LOOPS W/ FRIENDS ////
+//||||||||||||||||||||||||||--
+// CREATE INSTRUMENTS
+//||||||||||||||||||||||||||--
+var kick = new Wad({
+	source: 'sine',
+	env:    {
+						attack: 0.0,
+						decay: 0.055,
+						sustain: 0.0,
+						release: 0.0
+					},
+	volume: 1.2
+})
 
-//// Create "instruments" for each sound:
-//var kick = new Wad({source: 'assets/audio/kickEdit.mp3'});
-//var snare = new Wad({source: 'assets/audio/snareNoise.mp3'});
-//    snare.setVolume(1);
-var hiHatC = new Wad({source: 'assets/audio/kickEdit.mp3'});
-var hiHatOp = new Wad({source: 'assets/audio/kickEdit.mp3'});
-//var hiHatOp = new Wad({source: 'assets/highTom.mp3'});
+var snare = new Wad({ 
+	source: 'noise',
+	env: 		{
+						attack  : 0.0, 
+						decay   : 0.05,  
+						sustain : 0.0,  
+						hold    : 0.0, 
+						release : 0.05
+					},
+	volume: 0.25
+})
+
+var hihat = new Wad({ 
+	source: 'noise',
+	env: 		{
+						attack  : 0.0, 
+						decay   : 0.025,  
+						sustain : 0.0,  
+						hold    : 0.0, 
+						release : 0.05
+					},
+	volume: 0.12
+})
+
+var plunk = new Wad({
+	source: 'sine',
+	env:    {
+						attack: 0.0,
+						decay: 2.0,
+						sustain: 0.0,
+						release: 0.0
+					},
+	volume: 0.3
+})
 
 var handpan = new Wad({
     source : 'sine',
@@ -28,46 +67,31 @@ var handpan = new Wad({
 		volume: 0.75
 })
 
-var kick = new Wad({
-	source: 'sine',
-	env:    {
-						attack: 0.0,
-						decay: 0.075,
-						sustain: 0.0,
-						release: 0.0
-					},
-	volume: 1
-})
-
-var bass = new Wad({
-	source: 'sine',
-	env:    {
-						attack: 0.0,
-						decay: 1.2,
-						sustain: 0.0,
-						release: 0.0
-					},
-	volume: 1
+var stingray = new Wad({
+    source : 'sawtooth',
+   
+	env     : {      			 
+        attack  : 0.02, 	
+        decay   : 0.15,     
+        sustain : 0.15,     
+        hold    : 0.0,     
+        release : 0.5     
+    },
+    delay   : {
+        delayTime : .08,  // Time in seconds between each delayed playback.
+        wet       : .25, // Relative volume change between the original sound and the first delayed playback.
+        feedback  : .75, // Relative volume change between each delayed playback and the next.
+    },
+	volume: 0.2
 })
 
 
-var sine     = new Wad({ source : 'sine' })
-var square   = new Wad({ source : 'square' })
-var triangle = new Wad({ source : 'triangle' })
 
-var tripleOscillator = new Wad.Poly()
-
-tripleOscillator.add(sine).add(square).add(triangle) // Many methods are chainable for convenience.
-
-var snare = new Wad({ 
-	source: 'noise',
-	env: 		{
-						attack  : 0.0, 
-						decay   : 0.05,  
-						sustain : 0.0,  
-						hold    : 0.0, 
-						release : 0.05
-					},
-	volume: 0.25
-})
-
+//var sine     = new Wad({ source : 'sine' })
+//var square   = new Wad({ source : 'square' })
+//var triangle = new Wad({ source : 'triangle' })
+//
+//var tripleOscillator = new Wad.Poly()
+//
+//tripleOscillator.add(sine).add(square).add(triangle) // Many methods are chainable for convenience.
+//

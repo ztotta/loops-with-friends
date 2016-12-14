@@ -38,23 +38,13 @@
 		
 		// === SOCKETS === //
 		vm.socket             = io();
-//		vm.stationNSP         = $stateParams.id;
 		
 		console.log("socket: ", vm.socket);
 		
     function updateStation() {
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
-				
 				// Socket emits the new state of the station after updating the database:
 				vm.socket.emit('station_update', response.data);
-//				
-//				// Trying new NSP methodology:
-//				vm.socket.emit('station_update', vm.stationNSP);
-//				var nsp;
-//				setTimeout(function() {
-//					socket = io.connect()
-//				})
-				
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
@@ -69,15 +59,8 @@
 		});
 		// =================== //
 		
-//		vm.stepOnOff = function(step) {
-//			if (inst)
-//			step.on = !step.on;
-//			if (step.pressCount <= 3) { step.pressCount ++ }
-//			else { step.pressCount = 0 }
-//			console.log(step.pressCount)
-//		};
 		vm.stepOnOff = function(step) {
-			if (step.instrument === "KICK" || step.instrument === "SNARE") {
+			if (step.instrument === "KICK" || step.instrument === "SNARE" || step.instrument === "HIHAT") {
 				step.on = !step.on;
 			}
 			else {
@@ -125,17 +108,32 @@
 
 		function playStep(instr) {
 			if (!instr.muted) {	
-				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
+				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.name != "HIHAT" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
 					if (instr.name === "KICK") { 
 						kick.play({pitch: 80}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
+					else if (instr.name === "HIHAT") { hihat.play() }
+					else if (instr.name === "PLUNK") { 
+						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { plunk.play({pitch: 82.41}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { plunk.play({pitch: 87.30}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { plunk.play({pitch: 98.00}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { plunk.play({pitch: 123.5}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { plunk.play({pitch: 130.8}) }
+					}
 					else if (instr.name === "HANDPAN") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { handpan.play({pitch: 329.6}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { handpan.play({pitch: 349.2}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { handpan.play({pitch: 392.0}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { handpan.play({pitch: 493.9}) }
-						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { handpan.play({pitch: 523.3}) }plunk
+					}
+					else if (instr.name === "STINGRAY") { 
+						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { stingray.play({pitch: 329.6}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { stingray.play({pitch: 349.2}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 2) { stingray.play({pitch: 392.0}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 3) { stingray.play({pitch: 493.9}) }
+						else if (instr.steps[Math.floor(vm.i)].pressCount === 4) { stingray.play({pitch: 523.3}) }
 					}
 				}
 			}
