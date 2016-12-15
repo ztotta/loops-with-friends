@@ -5,6 +5,7 @@ To do:
 - fix navbar & footer responsiveness
 - steps getting stuck .pressed
 - .catch errors on all $http requests
+- Gulp-ify
 
 Bugs:
 - user invites not repeating but there is UNHANDLED ERROR on "user already invited"

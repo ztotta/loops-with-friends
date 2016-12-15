@@ -33,18 +33,20 @@
 		
 		// Turns off loop if user exits page without stopping it manually:
 		function loopToggle() {
-			vm.stationService.loopOn = !vm.stationService.loopOn;
-				setTimeout(() => {
-					// Clears the metronome from the instrument panels:
-					vm.stationService.station.stationInstruments.forEach((instr) => {
-						for (var k = 0; k < 64; k++) {
-							instr.steps[k].metronome = false;	
-						};	
-					});
-					// Resets loop to 'on' for when the user enters the next station:
-					vm.stationService.loopOn = !vm.stationService.loopOn;
-					$scope.$apply();
-				}, 400)
+			if (vm.stationService.loopOn) {
+				vm.stationService.loopOn = !vm.stationService.loopOn;
+					setTimeout(() => {
+						// Clears the metronome from the instrument panels:
+						vm.stationService.station.stationInstruments.forEach((instr) => {
+							for (var k = 0; k < 64; k++) {
+								instr.steps[k].metronome = false;	
+							};	
+						});
+						// Resets loop to 'on' for when the user enters the next station:
+						vm.stationService.loopOn = !vm.stationService.loopOn;
+						$scope.$apply();
+					}, 400)
+			}	
 		};
 		
 		// Adds station ID to the invited user's stationIds array:

@@ -24,6 +24,7 @@
 		getStations();
 		function getStations() {
 		 $http.get('/api/users/' + userDataService.user._id).then(function(response) {
+			 console.log(response.data.userStations)
 				vm.stationService.stations = response.data.userStations
 			}, function(errRes) {
 				console.error('Error retrieving station.', errRes);

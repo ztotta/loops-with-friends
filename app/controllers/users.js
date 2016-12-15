@@ -96,17 +96,26 @@ var userUpdate = function(req, res) {
 var userStationDelete = function(req, res) {
 	User.findById(req.params.id, function(err, user) {
 		
-		console.log("userStationDelete => user: ", user)
-		
 			if (err) res.json({message: "Failed to find the owner of that track"});
 
 			// If the stationId has been sent, and a matching user has been found:	
 			if (req.body.stationId && user)  {
 
 				// Remove the station's ID from the user's stationIds array:
-				var ind = user.userStations.indexOf(req.body.stationid);
-				user.userStations.splice(ind, 1);
-
+				var ind = 0;
+				var exists = false;
+				for (var i = 0; i < user.userStations.length; i++) {
+					if (user.userStations[i].equals(req.body.stationId)) {
+						ind = i;
+						exists = true;
+						break;
+					}
+				}
+				
+				if (exists) {
+					user.userStations.splice(ind, 1);
+				}
+				
 				// Save the updated user:
 				user.save(function(err, user) {
 					if (err) res.json(err);
