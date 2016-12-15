@@ -1,57 +1,36 @@
 <div class="row">
-<!--	<div class="panel instrument-panel" id="login-panel" ng-hide="vm.isLoggedIn()">-->
-<!--
-		<h3 class="banner-header">WELCOME</h3>
-		<br>
-		<p class="banner-header"><strong>
-				please <a ui-sref-active="active" ui-sref="register">register</a> or login:</strong></p>
-		<br>
-		<form class="form-inline" ng-submit="vm.login()">
-			<div class="form-group">
-				<label for="inputEmail1">Email</label>
-				<input type="text" id="inputEmail1" class="form-control" placeholder="email" ng-model="vm.loginData.email" required />
-			</div>
-			<div class="form-group">
-				<label for="inputPword1">Password</label>
-				<input type="password" id="inputPword1" class="form-control" placeholder="Save your info!" ng-model="vm.loginData.password" required />
-			</div>
-			<button class="btn btn-success submit-login-button" type="submit">LOGIN</button>
-		</form>
--->
-		
-		<div class="panel instrument-panel" id="welcome-panel" ng-hide="vm.isLoggedIn()">
-				<h2 class="banner-header">LOOPS W/ FRIENDS</h2>
-				<p class="banner-header"><strong>
-				please <a ui-sref-active="active" ui-sref="register">register</a> or <a ui-sref-active="active" ui-sref="login">login</a></strong></p>
-					<hr>
-				<h6>Build loop-based beats with 6 instruments, 384 launch-pads, and as MANY friends as you like.</h6>
-				<h6>Each pad on each instrument panel represents one 1/16th note, the grey 
-						pads are quarter notes, there are 4 measures, and the metronome cycles
-						through in red:</h6>
-				<img src="../assets/img/metronome-pad-shot.png" alt="pads" id="pads-img" class="center">
-				<h6>The percussion instrument pads simply toggle On/Off, while the melodic instrument pads cycle 
-					through the Javanese <a href="https://en.wikipedia.org/wiki/Slendro"><em>slendro</em></a> scale like this:</h6>
 
-				<!-- LISTING USER STATIONS -->
-				<ul id="stations" class="center">
-					<li>
-						<br>
-						<button class="btn E-note">E</button>
-						<button class="btn F-note">F</button>
-						<button class="btn G-note">G</button>
-						<button class="btn B-note">B</button>
-						<button class="btn C-note">C</button>
-					</li>
-				</ul>
+	<div class="panel instrument-panel" id="welcome-panel" ng-hide="vm.isLoggedIn()">
+			<h2 class="banner-header">LOOPS W/ FRIENDS</h2>
+			<p class="banner-header"><strong>
+			please <a ui-sref-active="active" ui-sref="register">register</a> or <a ui-sref-active="active" ui-sref="login">login</a></strong></p>
 				<hr>
-				<h5 class="banner-header">by ZACH TOTTA</h5>
-			<div class="center"><a href="https://github.com/ztotta/loops-with-friends">GITHUB</a>   |||   <a href="http://www.ZachTotta.com">PORTFOLIO</a>   |||   <a href="https://www.linkedin.com/in/ztotta">LINKED IN</a></div>
-		</div>
-		
-<!--	</div>-->
+			<h6>Build loop-based beats with 6 instruments, 384 launch-pads, and as MANY friends as you like.</h6>
+			<h6>Each pad on each instrument panel represents one 1/16th note, the grey 
+					pads are quarter notes, there are 4 measures, and the metronome cycles
+					through in red:</h6>
+			<img src="../assets/img/metronome-pad-shot.png" alt="pads" id="pads-img" class="center">
+			<h6>The percussion instrument pads simply toggle On/Off, while the melodic instrument pads cycle 
+				through the Javanese <a href="https://en.wikipedia.org/wiki/Slendro"><em>slendro</em></a> scale following this color code:</h6>
+
+			<!-- LISTING USER STATIONS -->
+			<ul id="stations" class="center">
+				<li>
+					<br>
+					<button class="btn E-note">E</button>
+					<button class="btn F-note">F</button>
+					<button class="btn G-note">G</button>
+					<button class="btn B-note">B</button>
+					<button class="btn C-note">C</button>
+				</li>
+			</ul>
+			<hr>
+			<h5 class="banner-header">by ZACH TOTTA</h5>
+		<div class="center"><a href="https://github.com/ztotta/loops-with-friends">GITHUB</a>   |||   <a href="http://www.ZachTotta.com">PORTFOLIO</a>   |||   <a href="https://www.linkedin.com/in/ztotta">LINKED IN</a></div>
+	</div>
 	
 	<div ng-controller="HelloController as hel">	
-		<div class="panel instrument-panel" id="hello-panel" ng-show="vm.isLoggedIn()">
+		<div class="panel" id="hello-panel" ng-show="vm.isLoggedIn()">
 			<div>
 				<h2>Welcome {{hel.userDataService.user.name}}!</h2>
 					<a class="btn" ng-click="hel.postStation()">NEW STATION</a>

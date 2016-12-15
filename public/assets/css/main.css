@@ -212,11 +212,10 @@ nav {
 	background-color: #DE7473 !important;
 }
 
-
 #hello-panel {
 	background-color: #d6d8e4;
 	width: 600px;
-	height: 400px;
+	height: auto;
 	margin: 74px auto 0 auto;
 	padding: 20px;
 }
@@ -224,7 +223,7 @@ nav {
 #about-panel {
 	background-color: #d6d8e4;
 	width: 600px;
-	height: 600px;
+	height: auto;
 	margin: 74px auto 0 auto;
 	padding: 20px;
 }
@@ -232,7 +231,7 @@ nav {
 #welcome-panel {
 	background-color: #d6d8e4;
 	width: 600px;
-	height: 660px;
+	height: auto;
 	margin: 74px auto 0 auto;
 	padding: 20px;
 	margin-bottom: 74px;	
@@ -240,14 +239,14 @@ nav {
 
 #register-panel {
 	width: 600px;
-	height: 600px;
+	height: 580px;
 	margin: 74px auto 0 auto;
 	padding: 20px;
 }
 
 #login-panel {
 	width: 600px;
-	height: 275px;
+	height: auto;
 	margin: 74px auto 0 auto;
 	padding: 20px;
 }
@@ -303,4 +302,8 @@ nav {
 	height: 210px;
 	background-color: #d6d8e4;
 	margin: 74px auto 0 auto;
+}
+
+.lifted-button {
+	margin: 0 auto 22px !important;
 }
