@@ -13,7 +13,7 @@
 		// === CONTROLLER OBJ/ARR/BOOL === //
     vm.currentUser        = userDataService.user;
 		vm.stationService     = stationService;
-		vm.loopOn             = false;
+//		vm.loopOn             = false;
 
 		// === CONTROLLER FUNCTIONS === //
     vm.getStation         = getStation;
@@ -78,7 +78,7 @@
 		};
 		
 		function loopToggle() {
-			vm.loopOn = !vm.loopOn;
+			vm.stationService.loopOn = !vm.stationService.loopOn;
 				setTimeout(() => {
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						for (var k = 0; k < 64; k++) {
@@ -107,7 +107,7 @@
 						instr.steps[Math.floor(vm.i)].metronome = true;  // add current metronome class
 						$scope.$apply();
 					})
-					if (vm.loopOn) { 
+					if (stationService.loopOn) { 
 						if (Math.floor(vm.i) < 63) {
 							setStepPromises();
 						}

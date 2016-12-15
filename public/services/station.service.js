@@ -16,7 +16,8 @@
 		stationFactory.email    = "";
 		stationService.station  = {};
 		stationService.stations = [];
-
+		stationService.loopOn   = false;
+		
     // return station factory object
     return stationFactory;
   }

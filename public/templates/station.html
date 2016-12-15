@@ -1,11 +1,11 @@
 <div class="container">
 
 	<div class="row panel" id="control-panel">
-		<div class="col s4 knob-global panel-button" ng-repeat="control in sta.stationService.station.globalControls" ng-click="sta.loopOff(); control.on = !control.on; sta.updateStation()">||||||||||||||||||||</div>
+		<div class="col s4 panel-button" ng-repeat="control in sta.stationService.station.globalControls">||||||||||||||||||||</div>
 		<div class="col s12" id="on-off-panel">
 			<hr>
-			<button class="btn" id="btn-on" ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.loopOn">LOOP ON</button>
-			<button class="btn" id="btn-off" ng-click="sta.loopToggle()" ng-show="sta.loopOn">LOOP OFF</button>
+			<button class="btn" id="btn-on" ng-click="sta.setStepPromises(); sta.loopToggle()" ng-show="!sta.stationService.loopOn">LOOP ON</button>
+			<button class="btn" id="btn-off" ng-click="sta.loopToggle()" ng-show="sta.stationService.loopOn">LOOP OFF</button>
 			<button ng-repeat="instrument in sta.stationService.station.stationInstruments" class="btn button-on-off" ng-click="instrument.show = !instrument.show; instrument.muted = !instrument.muted" ng-class="{'btn-inst-off': instrument.muted}">{{ instrument.name }}</button>
 		</div>
 	</div>
@@ -14,7 +14,7 @@
 		<div class="panel instrument-panel">
 			<div class="panel-header">
 			  <!-- can DRY up by making object in StationsController -->
-				<span class="col s4 panel-button" ng-mousedown="sta.panelButtonPressed(); sta.updateStation()">{{ instrument.name }}</span>
+				<span class="col s4 panel-button">{{ instrument.name }}</span>
 				<span class="col s4 panel-button">||||||||||||||||||||</span>
 				<span class="col s4 panel-button">||||||||||||||||||||</span>
 			</div>
