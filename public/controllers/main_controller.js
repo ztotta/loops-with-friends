@@ -34,6 +34,7 @@
 							instr.steps[k].metronome = false;	
 						};	
 					});
+					vm.stationService.loopOn = !vm.stationService.loopOn;
 					$scope.$apply();
 				}, 400)
 		};
