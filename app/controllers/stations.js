@@ -62,12 +62,13 @@ var stationCreate = function(req, res) {
 		createSteps(instrument, index);
 	});
 
+	var quarterNote = false;
 	function createSteps(instrument, index) {
 		for (var i = 0; i < 64; i++) {
 			if (i === 0 || i % 4) {
-				var quarterNote = true;
+				quarterNote = true;
 			} else {
-				var quarterNote = false;
+				quarterNote = false;
 			}
 
 			instrument.steps.push(
@@ -77,6 +78,7 @@ var stationCreate = function(req, res) {
 					pressed: false,
 					pressCount: -1,
 					quarterNote: quarterNote,
+					metronome: false,
 					instrument: `${instrument.name}`
 				}
 			);

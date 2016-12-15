@@ -77,26 +77,7 @@ var handpan = new Wad({
 		volume: 0.55
 })
 
-//var stingray = new Wad({
-//    source : 'sawtooth',
-//   
-//	env     : {      			 
-//        attack  : 0.02, 	
-//        decay   : 0.15,     
-//        sustain : 0.15,     
-//        hold    : 0.0,     
-//        release : 0.5     
-//    },
-//    delay   : {
-//        delayTime : .08,  
-//        wet       : .50, 
-//        feedback  : .75, 
-//    },
-//	volume: 0.12
-//})
-
-//var sine     = new Wad({ source : 'sine' })
-var square   = new Wad({ 
+var stingray   = new Wad({ 
 	source : 'square', 
 	env     : {      			 
         attack  : 0.50, 	
@@ -105,30 +86,31 @@ var square   = new Wad({
         hold    : 0.0,     
         release : 1.0     
     },
-		delay   : {
-        delayTime : .08,  
-        wet       : .75, 
-        feedback  : .50, 
-    },
-		volume: 0.045
-})
-var triangle = new Wad({ 
-	source : 'triangle', 
-	env     : {      			 
-        attack  : 0.50, 	
-        decay   : 0.25,     
-        sustain : 0.15,     
-        hold    : 0.0,     
-        release : 1.0     
-    },
-	delay   : {
-        delayTime : .08,  
-        wet       : .75, 
-        feedback  : .50, 
-    },
-		volume: 0.045
+//		delay   : {
+//        delayTime : .08,  //// causing too much glitching
+//        wet       : .95, 
+//        feedback  : .50, 
+//    },
+		volume: 0.0575
 })
 
-var stingray = new Wad.Poly()
+//var triangle = new Wad({ 
+//	source : 'triangle', 
+//	env     : {      			 
+//        attack  : 0.50, 	
+//        decay   : 0.25,     
+//        sustain : 0.15,     
+//        hold    : 0.0,     
+//        release : 1.0     
+//    },
+//	delay   : {
+//        delayTime : .08,  
+//        wet       : .75, 
+//        feedback  : .50, 
+//    },
+//		volume: 0.045
+//})
 
-stingray.add(square).add(triangle)
+//var stingray = new Wad.Poly()
+
+//stingray.add(square).add(triangle)

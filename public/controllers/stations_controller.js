@@ -78,6 +78,11 @@
 		
 		function loopToggle() {
 			vm.loopOn = !vm.loopOn;
+				vm.stationService.station.stationInstruments.forEach((instr) => {
+					for (var k = 0; k < 64; k++) {
+						instr.steps[k].metronome = false;	
+					};	
+				});
 		};
 
 		vm.i = -1
@@ -93,15 +98,21 @@
 			}))
 				.then(() => {
 					vm.stationService.station.stationInstruments.forEach((instr) => {
-						playStep(instr)
+						playStep(instr);
+						if (instr.steps[Math.floor(vm.i - 1)]) { instr.steps[Math.floor(vm.i - 1)].metronome = false;} // remove previous metronome class
+						instr.steps[Math.floor(vm.i)].metronome = true;  // add current metronome class
+						$scope.$apply();
 					})
 					if (vm.loopOn) { 
 						if (Math.floor(vm.i) < 63) {
 							setStepPromises();
 						}
 						else {
-								vm.i = -1;
-								setStepPromises();
+							vm.i = -1;
+							vm.stationService.station.stationInstruments.forEach((instr) => {
+								instr.steps[63].metronome = false; // remove previous metronome class
+							})	
+							setStepPromises();
 						}
 					}
 					else {
@@ -112,7 +123,7 @@
 					console.log(reason)
 				})
 		}
-
+		
 		function playStep(instr) {
 			if (!instr.muted) {	
 				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.name != "HIHAT" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
@@ -120,7 +131,6 @@
 						kick.play({pitch: 82.41}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
-//					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() * 1.25 - 1)}) }
 					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() - 1)}) }
 					else if (instr.name === "PLUNK") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { plunk.play({pitch: 82.41}) }

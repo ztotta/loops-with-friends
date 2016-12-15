@@ -8,17 +8,17 @@ Current issues:
 	 
 	 
 To do:
-- station renaming: put route, grabs station by its Id and updates it's name
+- station renaming: put route, grabs station by its Id and updates it's name, reset with the response.data
 - clean up/refactor ng-controller distribution
 - namespace socket.io rooms legitimately
 	=> http://bit.ly/2hjufCv
-- fix navbar collapsing fiasco
-- instructions, pentatonic step-guide
-	- show note name?
+- fix navbar & footer responsiveness
+- add instructions
+- steps getting stuck .pressed
+- quarterNotes
+- metronome
 
 Bugs:
-- email form:
-	- 'Email' label hangs back, or isn't there in the first place
 - users can invite themselves and it just repeats the station on their list
 	- when one is deleted, all the repeats disappear, as well
 - rethink updating on every click?

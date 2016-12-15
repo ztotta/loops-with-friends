@@ -200,8 +200,12 @@ nav {
 	background-color: black;
 }
 
-.quarterNote {
+.metronome {
 	background-color: black;
+}
+
+.quarterNote {
+	background-color: #4e90d0;
 }
 #login-panel {
 	width: 600px;
