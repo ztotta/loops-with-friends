@@ -201,11 +201,11 @@ nav {
 }
 
 .metronome {
-	background-color: #DE7473;
+	background-color: #DE7473 !important;
 }
 
 .quarterNote {
-	background-color: #4e90d0;
+	background-color: slategrey;
 }
 #login-panel {
 	width: 600px;
