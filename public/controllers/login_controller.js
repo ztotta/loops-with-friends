@@ -23,7 +23,9 @@
           $log.log("res.data: ", res.data.user);
 					vm.currentUser = res.data.user;
           $state.go('hello');
-        });
+        }, function(errRes) {
+						console.error('Error logging user in.', errRes);
+					});
     };
 
   }

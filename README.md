@@ -8,7 +8,7 @@ To do:
 - Gulp-ify
 
 Bugs:
-- user invites not repeating but there is UNHANDLED ERROR on "user already invited"
+- LOOP ON (i.e. button says off) when entering station sometimes (check navbar loopToggle function)
 
 Icebox:
 - play instrument live with keyboard, or start/stop instruments with keyboard

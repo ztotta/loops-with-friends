@@ -147,16 +147,16 @@ var userInvite = function(req, res) {
 						res.json({message: "user already invited"})
 					} else {
 						user.userStations.push(req.body.stationId);
-					}
-					
-					// Save the updated user:
-					user.save(function(err, user) {
-						if (err) res.json(err);
-						User.populate(user, {path: "userStations"}, function(err, uppedUser){
+						
+						// Save the updated user:
+						user.save(function(err, user) {
 							if (err) res.json(err);
-							res.json({message: 'invited ' + user.email});
+							User.populate(user, {path: "userStations"}, function(err, uppedUser){
+								if (err) res.json(err);
+								res.json({message: 'invited ' + user.email});
+							});
 						});
-					});
+				}	
 				} else {
 					res.json({message: "couldn't find that user..."});
 				}

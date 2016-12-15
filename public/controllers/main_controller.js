@@ -55,7 +55,9 @@
 				.then(function(response) {
 					console.log("response: ", response)
 					stationService.email = response.data.message;
-				});
+				}, function(errRes) {
+						console.error('Error inviting user.', errRes);
+					});
 		}
 		
     vm.$state = $state;

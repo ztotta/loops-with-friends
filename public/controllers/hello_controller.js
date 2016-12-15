@@ -44,6 +44,8 @@
 						vm.stationService.stations = response.data.userStations;
 						// Sends the user to the newly created station:
 						$state.go('station', {id: response.data.userStations[response.data.userStations.length-1]._id});
+					}, function(errRes) {
+						console.error('Error retrieving update.', errRes);
 					});
 			})
     }
@@ -58,6 +60,8 @@
 			$http.put('/api/users/stations/' + userDataService.user._id, {stationId: id})
 					.then(function(response) {
 						vm.stationService.stations = response.data.userStations;
+					}, function(errRes) {
+						console.error('Error deleting station.', errRes);
 					});
 		 }
 
