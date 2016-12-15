@@ -6,13 +6,13 @@
 
   function UsersController($state, authService, userDataService, $log, authToken) {
     var vm = this;
-
+		
+		// === CONTROLLER OBJ/ARR/BOOL === //
     vm.currentUser = userDataService.user;
-    // attaching functions to controller
+		
+    // === CONTROLLER FUNCTION === //
     vm.createUser = createUser;
 
-
-    // defining function declarations
     function createUser() {
       vm.message = '';
       // use the create function in the userService
@@ -27,7 +27,6 @@
           $log.error(err);
           $state.go('homePage');
         });
-
     };
   };
 })();

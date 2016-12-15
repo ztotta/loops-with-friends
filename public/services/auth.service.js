@@ -5,18 +5,18 @@
 
   authService.$inject = ["$http", "$q", "authToken", "userDataService", "$state", "$window"];
 
-  //||||||||||||||||||||||||||--
-  // AUTH SERVICE FACTORY
-  //||||||||||||||||||||||||||--
+  // ============================ //
+  // === AUTH SERVICE FACTORY === //
+  // ============================ //
   function authService($http, $q, authToken, userDataService, $state, $window) {
 
-    // create auth factory object
+    // Create auth factory object:
     var authFactory = {};
 
-    // log a user in
+    // Log a user in:
     authFactory.login = function(email, password) {
 
-      // return the promise object and its data
+      // Return the promise object and its data:
       return $http.post('/api/login', {
         email: 			 email,
         password:    password
@@ -24,24 +24,24 @@
         .then(function(data) {
           authToken.setToken(data.data.token);
 
-          // set userDataService.user to the logged in user
+          // Set userDataService.user to the logged in user:
           userDataService.user = data.data.user;
           console.log("Check it out: ", userDataService.user);
           return data;
         });
     };
 
-    // log a user out by clearing the token
+    // Log a user out by clearing the token:
     authFactory.logout = function() {
-      // clear the token
+      // Clear the token:
       authToken.setToken();
 
-      // return to homepage
+      // Return to homepage:
       $state.go('homePage');
     };
 
-    // check if a user is logged in
-    // checks if there is a local token
+    // Check if a user is logged in.
+    // Checks if there is a local token:
     authFactory.isLoggedIn = function() {
       if (authToken.getToken())
         return true;
@@ -49,7 +49,7 @@
         return false;
     };
 
-    // get the logged in user
+    // Get the logged in user:
     authFactory.setUser = function() {
       var token = authToken.getToken().split('.')[1];
       var user = JSON.parse($window.atob(token));
@@ -57,7 +57,7 @@
       return user;
     };
 
-    // return auth factory object
+    // Return auth factory object:
     return authFactory;
   }
 

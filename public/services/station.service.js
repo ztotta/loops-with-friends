@@ -5,12 +5,12 @@
 
   stationService.$inject = ["$http", "$q", "authToken", "userDataService", "$state", "$window"];
 
-  //||||||||||||||||||||||||||--
-  // STATION SERVICE FACTORY
-  //||||||||||||||||||||||||||--
+  // =============================== //
+  // === STATION SERVICE FACTORY === //
+  // =============================== //
   function stationService($http, $q, authToken, userDataService, $state, $window) {
 
-    // create station factory object
+    // Create station factory object:
     var stationFactory = {};
 		
 		stationFactory.email    = "";
@@ -18,7 +18,7 @@
 		stationService.stations = [];
 		stationService.loopOn   = false;
 		
-    // return station factory object
+    // Return station factory object:
     return stationFactory;
   }
 

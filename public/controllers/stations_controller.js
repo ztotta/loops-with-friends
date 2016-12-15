@@ -13,7 +13,6 @@
 		// === CONTROLLER OBJ/ARR/BOOL === //
     vm.currentUser        = userDataService.user;
 		vm.stationService     = stationService;
-//		vm.loopOn             = false;
 
 		// === CONTROLLER FUNCTIONS === //
     vm.getStation         = getStation;
@@ -38,11 +37,12 @@
       });
     }
 		
-		// =============== //
-		// === SOCKETS === //
-		// =============== //
+		// ============================= //
+		// ========== SOCKETS ========== //
+		// ============================= //
 		vm.socket = io();
 		
+		// Updates station whenever the state of a station is altered:
     function updateStation() {
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
 				// Socket emits the new state of the station after updating the database:
@@ -52,34 +52,40 @@
       })
     }
 		
-		// Listening for station_update from server:
+		// Listening for station_update's from server:
 		vm.socket.on('station_update', function (uppedStation) {
 			if (uppedStation._id === $stateParams.id) {
+				// Sets the state of the station to the updated state:
 				vm.stationService.station = uppedStation;
 				$scope.$apply();
 			}
 		});
-		// =============== //
-		// =============== //
-		// =============== //
+		// ============================= //
+		// ============================= //
+		// ============================= //
 		
 		vm.stepOnOff = function(step) {
+			// For percussion instruments, toggle step On/Off:
 			if (step.instrument === "KICK" || step.instrument === "SNARE" || step.instrument === "HIHAT") {
 				step.on = !step.on;
 			}
 			else {
+				// For melodic instruments, cycle through Off > On(E) > On(F) > On(G) > On(B) > On(C) > Off:
 				if (step.pressCount <= 3) { step.pressCount ++ }
 				else { step.pressCount = -1 }
 			}
 		};
 		
+		// Toggle stepPressed On/Off for CSS pushed-in effect:
 		vm.stepPressed = function(step) {
 			step.pressed = !step.pressed;
 		};
 		
+		// Toggle loop On/Off:
 		function loopToggle() {
 			vm.stationService.loopOn = !vm.stationService.loopOn;
 				setTimeout(() => {
+					// Clear the metronome from the panels:
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						for (var k = 0; k < 64; k++) {
 							instr.steps[k].metronome = false;	
@@ -89,11 +95,14 @@
 				}, 400)
 		};
 
+		// Set initial state of vm.i:
 		vm.i = -1
+		// Create a Promise.all for the i-th step of each instrument:
 		function setStepPromises() {
 			Promise.all(vm.stationService.station.stationInstruments.map(instr => {
 				var x = new Promise((res, rej) => {
 					setTimeout(() => {
+							// Adds 1/6th of 1 to each instrument so that i increases by 1 every cycle:
 							vm.i += 0.16666666666667;
 							res();
 					}, 100)
@@ -101,21 +110,28 @@
 				return x;
 			}))
 				.then(() => {
+					// Cycle through the instruments and play i-th step for each:
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						playStep(instr);
+						// Remove the metronome 'light' from the previous step (if it has been set):
 						if (instr.steps[Math.floor(vm.i - 1)]) { instr.steps[Math.floor(vm.i - 1)].metronome = false;} // remove previous metronome class
-						instr.steps[Math.floor(vm.i)].metronome = true;  // add current metronome class
+						// Add the metronome 'light to the i-th step so the user can follow the beat:
+						instr.steps[Math.floor(vm.i)].metronome = true; 
+						// Apply the changes:
 						$scope.$apply();
 					})
+					// If the loop is still On, call the Promise.all function again:
 					if (stationService.loopOn) { 
 						if (Math.floor(vm.i) < 63) {
 							setStepPromises();
 						}
+						// if all of the steps have been cycled through, reset the count and
+						// remove metronome 'light' from final step before starting the next loop:
 						else {
 							vm.i = -1;
 							vm.stationService.station.stationInstruments.forEach((instr) => {
-								instr.steps[63].metronome = false; // remove previous metronome class
-								$scope.$apply();
+								instr.steps[63].metronome = false; 
+								$scope.$apply(); // Apply the changes
 							})	
 							setStepPromises();
 						}
@@ -129,14 +145,18 @@
 				})
 		}
 		
+		// Play the i-th step for each instrument that is not muted:
 		function playStep(instr) {
 			if (!instr.muted) {	
+				// If the step is On, or if it is above 0 for melodic instruments (i.e. a note has been selected)
 				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.name != "HIHAT" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
+					// Find out which instrument it is and trigger the appropriate tone:
 					if (instr.name === "KICK") { 
 						kick.play({pitch: 82.41}) 
 					}
 					else if (instr.name === "SNARE") { snare.play() }
 					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() - 1)}) }
+					// For melodic instruments: determine which note is intended and trigger that pitch:
 					else if (instr.name === "PLUNK") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { plunk.play({pitch: 82.41}) }
 						else if (instr.steps[Math.floor(vm.i)].pressCount === 1) { plunk.play({pitch: 87.30}) }
