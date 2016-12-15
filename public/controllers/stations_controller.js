@@ -78,11 +78,14 @@
 		
 		function loopToggle() {
 			vm.loopOn = !vm.loopOn;
-				vm.stationService.station.stationInstruments.forEach((instr) => {
-					for (var k = 0; k < 64; k++) {
-						instr.steps[k].metronome = false;	
-					};	
-				});
+				setTimeout(() => {
+					vm.stationService.station.stationInstruments.forEach((instr) => {
+						for (var k = 0; k < 64; k++) {
+							instr.steps[k].metronome = false;	
+						};	
+					});
+					$scope.$apply();
+				}, 400)
 		};
 
 		vm.i = -1
@@ -111,6 +114,7 @@
 							vm.i = -1;
 							vm.stationService.station.stationInstruments.forEach((instr) => {
 								instr.steps[63].metronome = false; // remove previous metronome class
+								$scope.$apply();
 							})	
 							setStepPromises();
 						}
