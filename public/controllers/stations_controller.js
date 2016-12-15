@@ -30,7 +30,6 @@
 		// Initiate station show route:
 		function getStation(stationId) {
       $http.get('/api/stations/' + stationId).then(function(response) {
-				console.log(response.data)
         stationService.station = response.data;
       }, function(errRes) {
         console.error('Error retrieving station.', errRes);

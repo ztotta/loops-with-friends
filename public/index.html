@@ -35,7 +35,10 @@
 					<a ui-sref="hello" ng-click="vm.loopToggle()">My Stations</a>
 				</li>
 				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
-					<a ui-sref="register" ng-click="vm.loopToggle()">Register</a>
+					<a ui-sref="register">Register</a>
+				</li>
+				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
+					<a ui-sref="homePage">Login</a>
 				</li>
 				<li>
 					<a ui-sref="aboutPage" ng-click="vm.loopToggle()">About</a>
