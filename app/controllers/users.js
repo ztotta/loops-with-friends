@@ -68,6 +68,9 @@ var usersAll = function(req, res) {
   });
 }
 
+// =================== //
+// === UPDATE USER === //
+// =================== //
 var userUpdate = function(req, res) {
   User.findById(req.params.id, function(err, user) {
 
@@ -84,6 +87,37 @@ var userUpdate = function(req, res) {
           	res.json({ message: 'User updated!', userStations: uppedUser.userStations});
 					});
         });
+  });
+}
+
+// ============================== //
+// === DELETE TRACK FROM USER === //
+// ============================== //
+var userStationDelete = function(req, res) {
+	User.findById(req.params.id, function(err, user) {
+		
+		console.log("userStationDelete => user: ", user)
+		
+			if (err) res.json({message: "Failed to find the owner of that track"});
+
+			// If the stationId has been sent, and a matching user has been found:	
+			if (req.body.stationId && user)  {
+
+				// Remove the station's ID from the user's stationIds array:
+				var ind = user.userStations.indexOf(req.body.stationid);
+				user.userStations.splice(ind, 1);
+
+				// Save the updated user:
+				user.save(function(err, user) {
+					if (err) res.json(err);
+					User.populate(user, {path: "userStations"}, function(err, uppedUser){
+						if (err) res.json(err);
+						res.json({message: 'Station deleted from user', userStations: uppedUser.userStations});
+					});
+				});
+			} else {
+				res.json({message: "couldn't find that user..."});
+			}
   });
 }
 
@@ -115,7 +149,6 @@ var userInvite = function(req, res) {
   });
 }
 
-
 // =================== //
 // === DELETE USER === //
 // =================== //
@@ -133,10 +166,11 @@ var userDelete = function(req, res) {
 // === EXPORT MODULE === //
 // ===================== //
 module.exports = {
-  userCreate:   userCreate,
-  userShow:     userShow,
-  usersAll:     usersAll,
-  userUpdate:   userUpdate,
-	userInvite:   userInvite,
-  userDelete:   userDelete
-};
+  userCreate:          userCreate,
+  userShow:            userShow,
+  usersAll:            usersAll,
+  userUpdate:          userUpdate,
+	userInvite:          userInvite,
+	userStationDelete:   userStationDelete,
+  userDelete:          userDelete
+};  

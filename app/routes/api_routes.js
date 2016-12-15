@@ -15,6 +15,7 @@ router.post('/users',                                         UsersCtrl.userCrea
 router.get('/users/:id',     					 AuthsCtrl.tokenVerify, UsersCtrl.userShow);
 router.put('/users/:id',     					 AuthsCtrl.tokenVerify, UsersCtrl.userUpdate);
 router.put('/users/invite/:email',     AuthsCtrl.tokenVerify, UsersCtrl.userInvite);
+router.put('/users/stations/:id',      AuthsCtrl.tokenVerify, UsersCtrl.userStationDelete);
 router.delete('/users/:id',  					 AuthsCtrl.tokenVerify, UsersCtrl.userDelete);
 
 // ============================== //

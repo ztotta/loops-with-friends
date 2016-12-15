@@ -47,11 +47,10 @@
 		}
 		
 		function deleteStation(id) {
-			$http.delete('/api/stations/' + id).then(function(response) {
-					getStations();
-			}, function(errRes) {
-				console.error('Error deleting station.', errRes);
-			})
+			$http.put('/api/users/stations/' + userDataService.user._id, {stationId: id})
+					.then(function(response) {
+						vm.stationService.stations = response.data.userStations;
+					});
 		 }
 
 //			vm.$state = $state;
