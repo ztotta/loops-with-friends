@@ -7,12 +7,7 @@ To do:
 - .catch errors on all $http requests
 
 Bugs:
-- users can invite themselves and it just repeats the station on their list
-	- when one is deleted, all the repeats disappear, as well
-	  - also deletes it for the other user!!
-- rethink updating on every click?
-	- makes it glitchy when changes are made mid-loop
-  - glitchy playback...clipping & volume jumps
+- user invites not repeating but there is UNHANDLED ERROR on "user already invited"
 - if user leaves page without stopping loop, it keeps going...
 
 Icebox:
@@ -22,3 +17,6 @@ Icebox:
 	=> http://bit.ly/2hjufCv
 - make invite more realistic, with email, etc.
 - clean up/refactor ng-controller distribution
+- rethink updating on every click?
+	- makes it glitchy when changes are made mid-loop
+  - glitchy playback...clipping & volume jumps

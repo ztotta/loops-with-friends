@@ -132,8 +132,13 @@ var userInvite = function(req, res) {
 				// If the stationId has been sent, and a matching user has been found:	
         if (req.body.stationId && user)  {
         	
-					// Add the shared station's ID to the user's stationIds array:
-					user.userStations.push(req.body.stationId);
+					// Add the shared station's ID to the user's stationIds array
+					// if it isn't already present:
+					if (user.userStations.indexOf(req.body.stationId) != -1) {
+						res.json({message: "user already invited"})
+					} else {
+						user.userStations.push(req.body.stationId);
+					}
 					
 					// Save the updated user:
 					user.save(function(err, user) {
