@@ -22,14 +22,20 @@
         password:    password
       })
         .then(function(data) {
-          authToken.setToken(data.data.token);
+          if (data.data.success) {
+						authToken.setToken(data.data.token);
 
-          // Set userDataService.user to the logged in user:
-          userDataService.user = data.data.user;
-          console.log("Check it out: ", userDataService.user);
-					if (!userDataService.user) { return false }
-          return data;
-        });
+						// Set userDataService.user to the logged in user:
+						userDataService.user = data.data.user;
+						console.log("Check it out: ", userDataService.user);
+						return data;
+					} else {
+						return new Error(data.data.message);
+					}
+        }, function(err) {
+					console.log(err);
+					$state.go('login');
+				});
     };
 
     // Log a user out by clearing the token:

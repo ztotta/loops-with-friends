@@ -20,15 +20,20 @@
     function login() {
       authService.login(vm.loginData.email, vm.loginData.password)
         .then(function(res) {
-					if (!res.data.user) { 
-						$state.go('login'); 
-						return;
+//					if (!res.data.user) { 
+//						$state.go('login'); 
+//						return;
+//					}
+          if (authService.isLoggedIn()) {
+						$log.log("res.data: ", res.data.user);
+						vm.currentUser = res.data.user;
+						$state.go('hello');
+						vm.loginMessage = null;
+					} else {
+						vm.loginMessage = "Wrong email password combo. Try again!"
 					}
-          $log.log("res.data: ", res.data.user);
-					vm.currentUser = res.data.user;
-          $state.go('hello');
-        }, function(errRes) {
-						console.error('Error logging user in.', errRes);
+        }, function(err) {
+						console.error('Error logging user in.', err);
 						$state.go('login');
 					});
     };
