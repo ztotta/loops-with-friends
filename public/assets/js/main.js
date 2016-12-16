@@ -53,7 +53,7 @@ var plunk = new Wad({
 						sustain: 0.0,
 						release: 0.0
 					},
-	volume: 0.165
+	volume: 0.22
 })
 
 var handpan = new Wad({
