@@ -3,6 +3,7 @@ Current issues:
 To do:
 - make proper README
 - fix navbar & footer responsiveness
+- failed login still creates error, doesn't inform user (login_controller 23)
 - DRY-ify clearMetronome()
 - Gulp-ify
 
@@ -15,7 +16,5 @@ Icebox:
 - namespace socket.io rooms legitimately
 	=> http://bit.ly/2hjufCv
 - make invite more realistic for yet-to-register invitees => send email, etc.
-- clean up/refactor ng-controller distribution
-- rethink updating on every click?
-	- makes it glitchy when changes are made mid-loop
-  - glitchy playback...clipping & volume jumps
+- clean up/refactor ng-controller distribution (?)
+- glitchy playback...clipping & volume jumps

@@ -27,6 +27,7 @@
           // Set userDataService.user to the logged in user:
           userDataService.user = data.data.user;
           console.log("Check it out: ", userDataService.user);
+					if (!userDataService.user) { return false }
           return data;
         });
     };
