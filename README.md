@@ -1,10 +1,9 @@
 Current issues:
 	 
 To do:
-- add instructions (homepage, hellopage, aboutpage)
+- make proper README
 - fix navbar & footer responsiveness
 - steps getting stuck .pressed
-- .catch errors on all $http requests
 - Gulp-ify
 
 Bugs:

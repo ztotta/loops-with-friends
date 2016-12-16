@@ -53,7 +53,7 @@ var plunk = new Wad({
 						sustain: 0.0,
 						release: 0.0
 					},
-	volume: 0.125
+	volume: 0.165
 })
 
 var handpan = new Wad({
@@ -88,3 +88,37 @@ var stingray   = new Wad({
     },
 		volume: 0.0575
 })
+
+//	$('document').keydown(function(e) {
+//				e.preventDefault(); // prevent the default action (scroll / move caret)
+//				switch(e.which) {
+//						case 32: // space
+//							loopToggle();
+//						break;
+//						case 49: // 1
+//							vm.stationService.station.stationInstruments[0].muted = !vm.stationService.station.stationInstruments[0].muted 
+//						break;
+//
+//						case 50: // 2
+//							vm.stationService.station.stationInstruments[1].muted = !vm.stationService.station.stationInstruments[1].muted 
+//						break;
+//
+//						case 51: // 3
+//							vm.stationService.station.stationInstruments[2].muted = !vm.stationService.station.stationInstruments[2].muted 
+//						break;
+//					
+//						case 52: // 4
+//							vm.stationService.station.stationInstruments[3].muted = !vm.stationService.station.stationInstruments[3].muted 
+//						break;
+//					
+//						case 53: // 5
+//							vm.stationService.station.stationInstruments[4].muted = !vm.stationService.station.stationInstruments[4].muted 
+//						break;
+//						
+//						case 54: // 6
+//							vm.stationService.station.stationInstruments[5].muted = !vm.stationService.station.stationInstruments[5].muted 
+//						break;
+//
+//						default: return; // exit this handler for other keys
+//				}
+//	});
