@@ -286,6 +286,7 @@ nav {
 .banner-header {
 	text-align: center;
 	font-family: 'Permanent Marker', cursive;
+	margin: 0 0 0.25em 0 !important;
 }
 
 .btn-inst-off {
@@ -306,4 +307,8 @@ nav {
 
 .lifted-button {
 	margin: 0 auto 22px !important;
+}
+
+.btn-about {
+	padding: 0 .5rem !important;
 }
