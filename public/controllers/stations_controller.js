@@ -43,15 +43,16 @@
 		
 		// Updates station whenever the state of a station is altered:
     function updateStation() {
+			// Socket emits the new state of the station after updating the database:
+			vm.socket.emit('station_update', vm.stationService.station);
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
-				// Socket emits the new state of the station after updating the database:
-				vm.socket.emit('station_update', response.data);
+//				vm.socket.emit('station_update', response.data);
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
     }
 		
-		// Listening for station_update's from server:
+		// Listening for station_update's from socket:
 		vm.socket.on('station_update', function (uppedStation) {
 			if (uppedStation._id === $stateParams.id) {
 				// Sets the state of the station to the updated state:
