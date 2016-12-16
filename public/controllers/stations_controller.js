@@ -21,6 +21,7 @@
 		vm.setStepPromises    = setStepPromises;
 		vm.playStep           = playStep;
 		vm.loopToggle         = loopToggle;
+		vm.clearMetronome     = clearMetronome;
 		
 		// Pull in specific station for show route:
 		if ($stateParams.id) {
@@ -84,7 +85,11 @@
 		// Toggle loop On/Off:
 		function loopToggle() {
 			vm.stationService.loopOn = !vm.stationService.loopOn;
-				setTimeout(() => {
+				clearMetronome();
+		};
+		
+		function clearMetronome() {
+			setTimeout(() => {
 					// Clear the metronome from the panels:
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						for (var k = 0; k < 64; k++) {

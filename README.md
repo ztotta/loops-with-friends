@@ -3,7 +3,7 @@ Current issues:
 To do:
 - make proper README
 - fix navbar & footer responsiveness
-- steps getting stuck .pressed
+- DRY-ify clearMetronome()
 - Gulp-ify
 
 Bugs:

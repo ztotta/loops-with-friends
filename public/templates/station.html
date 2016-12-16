@@ -21,7 +21,7 @@
 			<div class="step-panel">
 				<span class="step" ng-repeat="step in instrument.steps" id="{{step.id}}" 
 					ng-mousedown="sta.stepPressed(step); sta.stepOnOff(step)"
-					ng-mouseup="sta.stepPressed(step); sta.updateStation()"
+					ng-mouseup="sta.stepPressed(step); sta.updateStation(); sta.clearMetronome()"
 					ng-class="{ 'depressed': step.pressed, 'stepOn': step.on, 'quarterNote': !step.quarterNote, 'metronome': step.metronome,
 						'E-note': step.pressCount === 0, 'F-note': step.pressCount === 1, 
 						'G-note': step.pressCount === 2, 'B-note': step.pressCount === 3, 'C-note': step.pressCount === 4,}">
