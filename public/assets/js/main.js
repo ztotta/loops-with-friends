@@ -86,31 +86,5 @@ var stingray   = new Wad({
         hold    : 0.0,     
         release : 1.0     
     },
-//		delay   : {
-//        delayTime : .08,  //// causing too much glitching
-//        wet       : .95, 
-//        feedback  : .50, 
-//    },
 		volume: 0.0575
 })
-
-//var triangle = new Wad({ 
-//	source : 'triangle', 
-//	env     : {      			 
-//        attack  : 0.50, 	
-//        decay   : 0.25,     
-//        sustain : 0.15,     
-//        hold    : 0.0,     
-//        release : 1.0     
-//    },
-//	delay   : {
-//        delayTime : .08,  
-//        wet       : .75, 
-//        feedback  : .50, 
-//    },
-//		volume: 0.045
-//})
-
-//var stingray = new Wad.Poly()
-
-//stingray.add(square).add(triangle)
