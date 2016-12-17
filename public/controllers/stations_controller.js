@@ -44,10 +44,9 @@
 		
 		// Updates station whenever the state of a station is altered:
     function updateStation() {
-			// Socket emits the new state of the station after updating the database:
+			// Socket emits the new state of the station before updating the database:
 			vm.socket.emit('station_update', vm.stationService.station);
       $http.put('/api/stations/' + vm.stationService.station._id, vm.stationService.station).then(function(response) {
-//				vm.socket.emit('station_update', response.data);
       }, function(errRes) {
         console.log('Error updating station.', errRes);
       })
@@ -102,7 +101,7 @@
 
 		// Set initial state of vm.i:
 		vm.i = -1
-		// Create a Promise.all for the i-th step of each instrument:
+		// Create a Promise.all for each instrument:
 		function setStepPromises() {
 			Promise.all(vm.stationService.station.stationInstruments.map(instr => {
 				var x = new Promise((res, rej) => {
@@ -115,7 +114,7 @@
 				return x;
 			}))
 				.then(() => {
-					// Cycle through the instruments and play i-th step for each:
+					// Cycle through the instruments and play a step for each:
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						playStep(instr);
 						// Remove the metronome 'light' from the previous step (if it has been set):
@@ -153,14 +152,12 @@
 		// Play the i-th step for each instrument that is not muted:
 		function playStep(instr) {
 			if (!instr.muted) {	
-				// If the step is On, or if it is above 0 for melodic instruments (i.e. a note has been selected)
+				// If the step is On, or if it is above 0 for melodic instruments (i.e. a note has been selected):
 				if (instr.steps[Math.floor(vm.i)].on || instr.name != "KICK" && instr.name != "SNARE" && instr.name != "HIHAT" && instr.steps[Math.floor(vm.i)].pressCount > -1) {
 					// Find out which instrument it is and trigger the appropriate tone:
-					if (instr.name === "KICK") { 
-						kick.play({pitch: 82.41}) 
-					}
-					else if (instr.name === "SNARE") { snare.play() }
-					else if (instr.name === "HIHAT") { hihat.play({panning: (Math.random() - 1)}) }
+					if      (instr.name === "KICK")                            { kick.play({pitch: 82.41}) }
+					else if (instr.name === "SNARE")                           { snare.play() }
+					else if (instr.name === "HIHAT")                           { hihat.play({panning: (Math.random() - 1)}) }
 					// For melodic instruments: determine which note is intended and trigger that pitch:
 					else if (instr.name === "PLUNK") { 
 						if      (instr.steps[Math.floor(vm.i)].pressCount === 0) { plunk.play({pitch: 82.41}) }

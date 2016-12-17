@@ -113,6 +113,7 @@ form {
 nav {
 	position: fixed;
 	top: 0;
+	z-index: 999;
 }
 
 .brand-logo {
@@ -134,7 +135,8 @@ nav {
 
 .depressed {
 	box-shadow: 0px 0px black;
-	transform: translateY(2px) translateX(2px)
+	transform: translateY(2px) translateX(2px);
+	z-index: -100;
 }
 
 .stepOn {
@@ -171,6 +173,7 @@ nav {
 .nav-wrapper {
 	background-color: #4e90d0;
 	color: white;
+	z-index: 1000;
 }
 
 #footer-wrapper {
