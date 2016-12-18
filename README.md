@@ -2,6 +2,7 @@
 ### <center> a MEAN-Stack, Single-Page, Real-Time App
 ##### <center> by Zach Totta
 ##### <center> [L00ps-With-Fri3nds.herokuapp.com](https://l00ps-with-fri3nds.herokuapp.com)
+###### <center> For a demo, login as: example@mail.com, password: abc123, but please touch nothing but the Loop On/Off button to preserve the demo for others. Feel free to Register if you wish to create your own loops!
 --
 ### ABOUT:
 ![about] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/about.png?raw=true)
