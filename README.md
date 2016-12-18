@@ -40,7 +40,7 @@ This is a full-stack, single-page app built with MongoDB, AngularJS / UI-Router,
 --
 
 ###YET TO BE RESOLVED:
-- The responsiveness of the navbar/footer could be improved with a hamburger dropdown menu. <br>
+- The responsiveness of the navbar/footer could be improved with a hamburger dropdown menu. Also, on huge screens the instrument panels can get a bit out-of-whack.<br>
 - I think it would be more fun if there were more instruments to choose from and the users had the ability to change tempo, and possibly even change the key and/or scale. <br>
 - Sometimes the pads get stuck 'pressed down'. I think this happens when the websockets update is sent out before the pad has readjusted, so it gets frozen in the 'down' position. <br>
 - It would also be nice if the stations could be paginated to have 4 or more sections, so you wouldn't be stuck in the same 4 measures the whole time. That could make it a better compositional tool, though right now it's kind of nice as an approachable toy that's fun and could inspire further composition in a more traditional program. <br>
