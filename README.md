@@ -39,8 +39,8 @@ This is a full-stack, single-page app built with MongoDB, AngularJS, Node.js + E
 --
 
 ###YET TO BE RESOLVED:
-- As of now, the page is designed for screens at least 1000px wide. Beneath that, the header and footer start getting weird. This was initially ignored on purpose, because I didn't think the app would even be usable on a screen smaller than that, but it is actually not that bad, even on a phone. So I will have to go back and correct for that. <br>
-- Also, I think it would be more fun if there were more instruments to choose from and the users had the ability to change tempo, and possibly even change the key and/or scale. <br>
+- The responsiveness of the navbar/footer could be improved with a hamburger dropdown menu. <br>
+- I think it would be more fun if there were more instruments to choose from and the users had the ability to change tempo, and possibly even change the key and/or scale. <br>
 - Sometimes the pads get stuck 'pressed down'. I think this happens when the websockets update is sent out before the pad has readjusted, so it gets frozen in the 'down' position. <br>
 - It would also be nice if the stations could be paginated to have 4 or more sections, so you wouldn't be stuck in the same 4 measures the whole time. That could make it a better compositional tool, though right now it's kind of nice as an approachable toy that's fun and could inspire further composition in a more traditional program. <br>
 - Finally, this app would feel more complete if users could communicate, so a chat feature could really do wonders for the user experience and create a more realistic environment for collaboration.
