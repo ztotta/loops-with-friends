@@ -39,82 +39,61 @@ var stationIndex = function(req, res) {
 // ====================== //
 var stationCreate = function(req, res) {
   
-		//// Assign arrays:
+	// Instantiate arrays:
 	var instruments = [];
 	var instrumentsList = ["KICK", "SNARE", "HIHAT", "PLUNK", "HANDPAN", "STINGRAY"];
 
 	instrumentsList.forEach(instrument => {
-		createInstruments(instrument);
+		createInstruments(instrument);   // Create each instrument
 	});
 
 	function createInstruments(instrument) {
 		instruments.push({
 			name: instrument,
-			steps: [],
-			muted: false,
-			mutePressed: false,
-			show: true
+			steps: [],        // Will hold the 64 steps/pads created below
+			muted: false,     // Should the instrument be heard?
+			show: true        // Should the instrument be displayed?
 		});
 	}
 
-	// For each instrument, call the steps to populate its panel:
+	// For each instrument, call createSteps to populate its panel:
 	instruments.forEach((instrument, index) => {
-		createSteps(instrument, index);
+		createSteps(instrument, index); 
 	});
 
-	var quarterNote = false;
 	function createSteps(instrument, index) {
-		for (var i = 0; i < 64; i++) {
+		for (var i = 0; i < 64; i++) {         // Create 64 steps per instrument panel.
 			if (i === 0 || i % 4) {
-				quarterNote = true;
+				var quarterNote = true;            // Every 4 steps should be a quarter note.
 			} else {
-				quarterNote = false;
+				var quarterNote = false;
 			}
 
 			instrument.steps.push(
 				{
 					id: `${instrument.name}${i}`,
-					on: false,
-					pressed: false,
-					pressCount: -1,
-					quarterNote: quarterNote,
-					metronome: false,
-					instrument: `${instrument.name}`
+					on: false,                        // Is the note On/Off ?
+					pressed: false,                   // Used for the 'pressing' button effect
+					pressCount: -1,                   // Tallied to know what note the melodic instrument is on
+					quarterNote: quarterNote,         // Quarter notes are a different color for easier panel clarity
+					metronome: false,                 // Used to toggle On/Off the red metronome 'light'
+					instrument: `${instrument.name}`  // Used to easily access which instrument a step belongs to
 				}
 			);
 		};
 	};
 	
-	var globalControls = [
-				{ 
-					name: "GLOBAL I/O",
-					on: false
-				},
-				{ 
-					name: "TEMPO",
-					on: true
-				},
-				{ 
-					name: "KEY",
-					on: true
-				}
-			];
-	
-	var station                    = new Station();   // create a new instance of the Station model
+	var station                    = new Station();   // Create a new instance of the Station model
 
-  station.name                   = req.body.name;
-//  station.user              		 = req.body.user;
-	station.stationInstruments     = instruments;
-	station.globalControls         = globalControls;
+  station.name                   = req.body.name;   // Name it
+	station.stationInstruments     = instruments;     // Insert the freshly built instruments
 
   station.save(function(err, savedStation) {
     if (err) {
       res.send(err)
     }
 
-    // log a message
-    console.log("Created a station!")
-    // return the station
+    // Return the new station:
     res.json(savedStation);
   });
 };
@@ -124,7 +103,6 @@ var stationCreate = function(req, res) {
 // ====================== //
 var stationUpdate = function(req, res) {
   var id = req.body._id;
-//	console.log("var id: ", id)
 
   Station.findById(id, function(err, station) {
 

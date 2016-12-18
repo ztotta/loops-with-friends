@@ -118,7 +118,7 @@
 					vm.stationService.station.stationInstruments.forEach((instr) => {
 						playStep(instr);
 						// Remove the metronome 'light' from the previous step (if it has been set):
-						if (instr.steps[Math.floor(vm.i - 1)]) { instr.steps[Math.floor(vm.i - 1)].metronome = false;} // remove previous metronome class
+						if (instr.steps[Math.floor(vm.i - 1)]) { instr.steps[Math.floor(vm.i - 1)].metronome = false;}
 						// Add the metronome 'light to the i-th step so the user can follow the beat:
 						instr.steps[Math.floor(vm.i)].metronome = true; 
 						// Apply the changes:
@@ -129,19 +129,19 @@
 						if (Math.floor(vm.i) < 63) {
 							setStepPromises();
 						}
-						// if all of the steps have been cycled through, reset the count and
+						// If all of the steps have been cycled through, reset the count and
 						// remove metronome 'light' from final step before starting the next loop:
 						else {
 							vm.i = -1;
 							vm.stationService.station.stationInstruments.forEach((instr) => {
 								instr.steps[63].metronome = false; 
-								$scope.$apply(); // Apply the changes
+								$scope.$apply();    // Apply the changes
 							})	
 							setStepPromises();
 						}
 					}
-					else {
-						vm.i = -1;
+					else { 
+						vm.i = -1;    // Otherwise, reset i and let the loop die
 					}
 				})
 				.catch((reason) => {

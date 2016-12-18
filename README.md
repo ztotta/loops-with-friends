@@ -1,41 +1,44 @@
-# [LOOPS W/ FRIENDS](https://l00ps-with-fri3nds.herokuapp.com)
-a MEAN-Stack app
+# <center>[LOOPS W/ FRIENDS](https://l00ps-with-fri3nds.herokuapp.com)
+### <center> a MEAN-Stack, Single-Page, Real-Time App
 --
-![homepage](https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/home.png?raw=true)
+### ABOUT:
+![about] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/about.png?raw=true)
+--
 
-###Description:
 After registering through a JWT-based authentication, users are brought to a welcome page where they can create new loop-stations and access or delete previous stations:
 
 ![welcome] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/list.png?raw=true)
+--
 
-Within a given station, users can build loop-based beats on 6 instruments with 384 launchpads.
-
-![survey] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/station.png?raw=true)
-
-![survey] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/metronome-pad-shot.png?raw=true)
-
-Users can then share these results with a unique URL and/or retake the survey.
-
-They can also search for individual .gifs from the Giphy API without logging in through our homepage InstaGif feature:
+Within a given station, users can start to build their beats. The percussive instruments' pads simply toggle On/Off, while the melodic instruments' cycle through the pentatonic Javanese <em>slendro</em> scale:
 
 ![instagif] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/melodic.png?raw=true)
+--
 
-###Technologies used:
+###TECHNOLOGIES USED:
 
-This is a full-stack app employing MongoDB, Node.js + Express, JavaScript, jQuery / AJAX / Promises, Google OAuth 2.0, Materialize, HTML, CSS and the Giphy API. Deployed via Heroku.
+This is a full-stack, single-page app built with MongoDB, AngularJS, Node.js + Express, JavaScript, Promises, Socket.io, JSON Webtoken Authentication, Materialize, HTML, & CSS. Deployed via Heroku.
 
-###Code
+--
 
-Our top challenges included:
+###CODE
 
-- sending data to and from our Mongo database and the Giphy API using a mix of AJAX and HTTP requests, and then populating that data onto the Results page timeline in the correct order. This required writing a Promise.all that gathers the asynchronous responses into one array so that they can then be sorted into the correct order again by their index property
+##### Challenges: <br>
+- building the loop-stations as reusable components, where each station has 6 instruments, and each instrument has 64 launchpads, so that they can all be manipulated, monitored, and updated predictably. This allows for simple expansion if more instruments were to be added in the future. <br>
+- creating unique stations that can be shared with others users and updated in real time via websockets. <br>
+- getting the styling correct was a major challenge, but I'm happy with the both the design and the UI of the stations, especially the reactive, realistic pressing of the buttons.
+- j
 
-- generating unique, functional URLs that can be shared with non-logged-in users
-
-- styling our site symmetrically and responsively via Materialize
+--
 
 ###Yet to be resolved:
-Although we are pleased with the progression of our project and its functionality, there are just a few things that we would add if given more time, including a direct post-to-facebook button, a responsive footer on the timeline page, and improved responsiveness for mobile devices.
+- As of now, the page is designed for screens at least 1000px wide. Beneath that, the header and footer start getting weird. This was initially ignored on purpose, because I didn't think the app would even be usable on a screen smaller than that, but it is actually not that bad, even on a phone. So I will have to go back and correct for that. <br>
+- Also, I think it would be more fun if there were more instruments to choose from and the users had the ability to change tempo, and possibly even change the key and/or scale. <br>
+- Sometimes the pads get stuck 'pressed down'. I think this happens when the websockets update is sent out before the pad has readjusted, so it gets frozen in the 'down' position. <br>
+- It would also be nice if the stations could be paginated to have 4 or more sections, so you wouldn't be stuck in the same 4 measures the whole time. That could make it a better compositional tool, though right now it's kind of nice as an approachable toy that's fun and could inspire further composition in a more tradiational program. <br>
+- Finally, this app would feel more complete if users could communicate, so a chat feature could really do wonders for the user experience and create a more realistic environment for collaboration.
+
+--
 
 ###Conclusion:
-Ultimately, this turned out to be an excellent project choice for our group. We intentionally chose a concept that has relatively simple funcitonality so that we could make something engaging while focusing on working congruently as a team using Agile development and Git version control. We were able to accomplish both of those goals while also overcoming a number of unforseen challenges that we worked on both as a team and as individuals. We worked extremely well as a unit and each one of us is proud of what we accomplished in the past few days. The balance between the attainability of our project's scope and the amount that it pushed us to understand new concepts was even better than we had anticipated, and the gif...it keeps on gifing.
+I built this app in a little over a week, and I honestly surprised myself with the result. I'm really happy with the design & UX, and I'm proud of the code that's making it all possible. I had a lot of fun building this out from concept to deployed product, even through some intense battles with the loop-station playback. After this project, I feel way more confident with Angular/MEAN, and the component-y architecture makes me excited to get into Angular 2 and React.

@@ -9,7 +9,6 @@ var stationSchema = new mongoose.Schema({
   name:   		    			 String,
   user:   		    			 { type: mongoose.Schema.Types.ObjectId, ref:'User' },
 	stationInstruments:    [],
-	globalControls:        []
 });
 
 // Create the model using your schema.
