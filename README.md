@@ -1,12 +1,14 @@
 # [LOOPS W/ FRIENDS](https://l00ps-with-fri3nds.herokuapp.com)
-a MEAN stack app
+a MEAN-Stack app
 --
-###Description:
-After registering through a JWT-based authentication, users can build loop-based beats with 6 instruments, 384 launchpads, and as MANY friends as they like.
-
 ![homepage](https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/home.png?raw=true)
 
+###Description:
+After registering through a JWT-based authentication, users are brought to a welcome page where they can create new loop-stations and access or delete previous stations:
 
+![welcome] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/list.png?raw=true)
+
+Within a given station, users can build loop-based beats on 6 instruments with 384 launchpads.
 
 ![survey] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/station.png?raw=true)
 
