@@ -1,20 +1,22 @@
 # [LOOPS W/ FRIENDS](https://l00ps-with-fri3nds.herokuapp.com)
----
-
-![homepage]()
-
+a MEAN stack app
+--
 ###Description:
+After registering through a JWT-based authentication, users can build loop-based beats with 6 instruments, 384 launchpads, and as MANY friends as they like.
+
+![homepage](https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/home.png?raw=true)
 
 
-Their results are then returned in a vertical timeline with their responses represented by corresponding .gifs pulled from the Giphy API:
 
-![survey] (https://github.com/ztotta/the-gif-that-keeps-on-gifing/blob/master/README%20img/timeline2.png?raw=true)
+![survey] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/station.png?raw=true)
+
+![survey] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/metronome-pad-shot.png?raw=true)
 
 Users can then share these results with a unique URL and/or retake the survey.
 
 They can also search for individual .gifs from the Giphy API without logging in through our homepage InstaGif feature:
 
-![instagif] (https://github.com/ztotta/the-gif-that-keeps-on-gifing/blob/master/README%20img/instagif.png?raw=true)
+![instagif] (https://github.com/ztotta/loops-with-friends/blob/master/public/assets/img/melodic.png?raw=true)
 
 ###Technologies used:
 
