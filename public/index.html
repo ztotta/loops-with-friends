@@ -24,13 +24,12 @@
   
 	<nav>
 		<div class="nav-wrapper">
-			<a ui-sref="hello" class="brand-logo hide-on-lrg-and-down" ng-click="vm.loopToggle()">LOOPS W/ FRIENDS</a>
-			<a ui-sref="hello" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" ng-click="vm.loopToggle()">Loops W/ Friends</i></a>
-			<ul class="right hide-on-med-and-down">
-				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
+			<a ui-sref="hello" class="brand-logo" ng-click="vm.loopToggle()">LOOPS W/ FRIENDS</a>
+			<ul class="right">
+				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()" class="hide-on-med-and-down">
 					<span>{{ vm.stationService.station.name }}</span>
 				</li>
-				<li role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
+				<li class="hide-on-med-and-down" role="presentation" ui-sref-active="active" ng-show="vm.checkParams()">
 					<a ui-sref="hello" ng-click="vm.loopToggle()">My Stations</a>
 				</li>
 				<li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
@@ -40,10 +39,10 @@
 					<a ui-sref="login">Login</a>
 				</li>
 				<li>
-					<a ui-sref="aboutPage" ng-click="vm.loopToggle()">About</a>
+					<a ui-sref="aboutPage" ng-click="vm.loopToggle()" class="hide-on-small-only">About</a>
 				</li>
 				<li ng-show="vm.isLoggedIn()">
-					<a class="btn" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</a>
+					<a class="btn" ng-click="vm.logout()">Logout</a>
 				</li>
 			</ul>
 		</div>
@@ -57,11 +56,11 @@
 	<div id="footer">
 <!--		<div id="footer-wrapper" class="nav-wrapper">-->
 	 <div class="row invite valign-wrapper" ng-show="vm.checkParams()">
-				<button class="btn E-note">E</button>
-				<button class="btn F-note">F</button>
-				<button class="btn G-note">G</button>
-				<button class="btn B-note">B</button>
-				<button class="btn C-note">C</button>
+				<button class="btn E-note hide-on-med-and-down">E</button>
+				<button class="btn F-note hide-on-med-and-down">F</button>
+				<button class="btn G-note hide-on-med-and-down">G</button>
+				<button class="btn B-note hide-on-med-and-down">B</button>
+				<button class="btn C-note hide-on-med-and-down">C</button>
 		<div class="col s12 invite-div valign-wrapper">
 			Enter a friend's email to invite:
 			<div class="input-field inline">

@@ -2799,13 +2799,13 @@ ul.staggered-list li {
 /*********************
   Media Query Classes
 **********************/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important;
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 700px) {
   .hide-on-med-and-down {
     display: none !important;
   }
@@ -4070,16 +4070,21 @@ nav .brand-logo {
 }
 
 nav .brand-logo.center {
+/*
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+*/
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 900px) {
   nav .brand-logo {
+		font-size: 1.25em;
+/*
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+*/
   }
   nav .brand-logo.left, nav .brand-logo.right {
     padding: 0;
